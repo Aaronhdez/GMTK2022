@@ -23,6 +23,6 @@ public class Bow : Weapon
             return;
         }
 
-        Instantiate(arrowGO, spawnPoint);
+        Instantiate(arrowGO, spawnPoint.position, spawnPoint.rotation);
     }
 }

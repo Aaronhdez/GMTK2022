@@ -8,9 +8,14 @@ public abstract class Projectile : MonoBehaviour
 
     public float speed = 3f;
 
+    private void Start()
+    {
+        Destroy(gameObject, 20);
+    }
+
     private void Update()
     {
-        transform.Translate(transform.up * speed * Time.deltaTime);
+        transform.Translate(Vector3.up * speed * Time.deltaTime);
     }
 
     public abstract void Attack();

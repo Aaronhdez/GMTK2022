@@ -22,6 +22,6 @@ public class Staff : Weapon
             return;
         }
 
-        Instantiate(fireballGO, spawnPoint);
+        Instantiate(fireballGO, spawnPoint.position, spawnPoint.rotation);
     }
 }
