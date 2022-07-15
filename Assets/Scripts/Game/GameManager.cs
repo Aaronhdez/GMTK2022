@@ -1,18 +1,26 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    SpawnManager _spawnManager;
+    void Start() {
+        LoadEntities();
+        SetUpGame();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
+    private void LoadEntities() {
+        _spawnManager = GetComponent<SpawnManager>();
+    }
+
+    private void SetUpGame() {
+        _spawnManager.StartSpawnManager();
+    }
+
+
+    void Update() {
         
     }
 }
