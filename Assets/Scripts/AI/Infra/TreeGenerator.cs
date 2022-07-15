@@ -10,8 +10,7 @@ namespace BehaviorTree {
         public TreeGenerator(GameObject agent) {
             treesAvaliable = new Dictionary<string, ITree>();
             
-            //V1
-            treesAvaliable.Add("DummyBT_V1", null);
+            treesAvaliable.Add("Enemy_BT", new Enemy_BT(null, agent));
         }
 
         public ITree ConstructTreeFor(string treeToLoad) {

@@ -10,6 +10,7 @@ public class Chase : Node
 
     public Chase(GameObject agent) {
         _agent = agent;
+        _controller = agent.GetComponent<CharacterController>();
     }
 
     public override NodeState Evaluate() {
