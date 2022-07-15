@@ -15,10 +15,6 @@ public class EnemyController : CharacterController {
     {
 
     }
-
-<<<<<<< HEAD
-    public void Attack() {
-=======
     public override void Attack()
     {
         throw new System.NotImplementedException();
@@ -26,7 +22,6 @@ public class EnemyController : CharacterController {
 
     public override void Die()
     {
->>>>>>> 0e450ca0731f0cb14af3bbf3a5fd94dd70ba8d17
         throw new System.NotImplementedException();
     }
 
