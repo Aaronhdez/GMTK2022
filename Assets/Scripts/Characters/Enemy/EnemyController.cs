@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class EnemyController : CharacterController {
 
     // Start is called before the first frame update
@@ -15,7 +11,6 @@ public class EnemyController : CharacterController {
     {
 
     }
-
     public override void Attack()
     {
         throw new System.NotImplementedException();
@@ -35,4 +30,5 @@ public class EnemyController : CharacterController {
     {
         throw new System.NotImplementedException();
     }
+
 }
