@@ -1,22 +1,21 @@
 using BehaviorTree;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class CheckIfHealthIsZero : Node {
+public class Attack : Node {
+
     private GameObject _agent;
     private CharacterController _controller;
 
-    public CheckIfHealthIsZero(GameObject agent) {
+    public Attack(GameObject agent) {
         _agent = agent;
         _controller = agent.GetComponent<CharacterController>();
     }
 
     public override NodeState Evaluate() {
-        if (_controller.CharacterLife <= 0) {
-            state = NodeState.SUCCESS;
-            return state;
-        }
-
-        state = NodeState.FAILURE;
+        _controller.Attack();
+        state = NodeState.RUNNING;
         return state;
     }
 }

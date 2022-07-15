@@ -1,17 +1,20 @@
 using BehaviorTree;
 using UnityEngine;
 
-public class CheckIfHealthIsZero : Node {
+public class CheckIfPlayerIsOnAttackRange : Node {
+
     private GameObject _agent;
     private CharacterController _controller;
 
-    public CheckIfHealthIsZero(GameObject agent) {
+    public CheckIfPlayerIsOnAttackRange(GameObject agent) {
         _agent = agent;
         _controller = agent.GetComponent<CharacterController>();
     }
-
     public override NodeState Evaluate() {
-        if (_controller.CharacterLife <= 0) {
+        var _player = GameObject.Find("Player").transform;
+
+        if (Vector2.Distance(_player.position, _agent.transform.position) < 1) { 
+            //_controller.GetAttackDistance()) {
             state = NodeState.SUCCESS;
             return state;
         }
@@ -19,4 +22,5 @@ public class CheckIfHealthIsZero : Node {
         state = NodeState.FAILURE;
         return state;
     }
+
 }
