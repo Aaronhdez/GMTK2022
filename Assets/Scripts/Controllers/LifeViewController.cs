@@ -1,11 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LifeViewController : MonoBehaviour
 {
     public PlayerController player;
-    public float unitHeartLength = 160f;
+
+    [SerializeField]
+    Image lifeImage;
+
+    [SerializeField]
+    Sprite[] lifes;
 
     private RectTransform rectTransform;
 
@@ -17,6 +23,30 @@ public class LifeViewController : MonoBehaviour
 
     void OnPlayerDamaged(int health)
     {
-        rectTransform.sizeDelta = new Vector2(unitHeartLength * health, rectTransform.rect.height);
+        switch (player.CharacterLife)
+        {
+            case 6:
+                lifeImage.sprite = lifes[0];
+                break;
+            case 5:
+                lifeImage.sprite = lifes[1];
+                break;
+            case 4:
+                lifeImage.sprite = lifes[2];
+                break;
+            case 3:
+                lifeImage.sprite = lifes[3];
+                break;
+            case 2:
+                lifeImage.sprite = lifes[4];
+                break;
+            case 1:
+                lifeImage.sprite = lifes[5];
+                break;
+            default:
+                lifeImage.sprite = lifes[6];
+                break;
+
+        }
     }
 }

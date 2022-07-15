@@ -108,11 +108,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 12
-        y: 132
+        y: 173
         width: 56
         height: 56
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -129,11 +129,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 92
-        y: 132
+        y: 173
         width: 55
         height: 56
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -150,11 +150,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 171
-        y: 132
+        y: 173
         width: 55
         height: 56
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -171,11 +171,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 12
-        y: 62
+        y: 103
         width: 56
         height: 55
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -192,11 +192,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 92
-        y: 62
+        y: 103
         width: 55
         height: 55
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -213,11 +213,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 171
-        y: 62
+        y: 103
         width: 55
         height: 55
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -225,6 +225,27 @@ TextureImporter:
       bones: []
       spriteID: f79a6005fea5b2a4bb0488226bf945b6
       internalID: 898607325
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dice_life_6
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 36
+        width: 56
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41bc7fa4402788f4a8dfa5e4c0099e19
+      internalID: -898456818
       vertices: []
       indices: 
       edges: []
@@ -241,6 +262,7 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       dice_life_1: -64113298
+      dice_life_6: -898456818
       dice_life_5: 898607325
       dice_life_3: 891343325
       dice_life_0: 1918058363
