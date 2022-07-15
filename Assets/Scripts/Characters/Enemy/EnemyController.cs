@@ -26,7 +26,7 @@ public class EnemyController : CharacterController {
         throw new System.NotImplementedException();
     }
 
-    public override void TakeDamage()
+    public override void TakeDamage(int damage)
     {
         throw new System.NotImplementedException();
     }

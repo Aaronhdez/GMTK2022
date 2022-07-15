@@ -1,20 +1,46 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : CharacterController
 {
+
+    public event Action<int> playerDamagedEvent;
+
+    [SerializeField]
+    private bool invincible;
+    [SerializeField]
+    private float invincibleTime;
+
+    private bool dead = false;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        CharacterLife = 6;
+        CharacterMovementSpeed = 20f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Move();
+        if (!dead)
+        {
+            Move();
+        }
+    }
+    
+    //Recibir daño temporal
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("Taking damage");
+        TakeDamage(1);
     }
 
-    float movementSpeed = 5f; 
+    float movementSpeed = 5f; //Placeholder
+    float deltaTimeVar = 60f; //placeHolder
+
 
     public override void Attack()
     {
@@ -23,10 +49,17 @@ public class PlayerController : CharacterController
 
     public override void Die()
     {
-        throw new System.NotImplementedException();
+        Debug.Log("Player dead");
+        dead = true;
+
+        //Diying animation and sound
+
+        //GameOver screen
+
     }
 
-    public override void Move() {
+    public override void Move()
+    {
 
         //Rotacion 
 
@@ -62,11 +95,35 @@ public class PlayerController : CharacterController
         if (Input.GetKey(KeyCode.S)) //Si el jugador tiene el boton "S" pulsado 
         {
             transform.Translate(Vector2.down * movementSpeed * Time.deltaTime, Space.World); //Se mueve hacia abajo
-        } 
+        }
+
+        //Rotacion 
+
     }
 
-    public override void TakeDamage()
+    public override void TakeDamage(int damage)
     {
-        throw new System.NotImplementedException();
+        if (!invincible)
+        {
+            CharacterLife = Mathf.Clamp(CharacterLife - damage, 0, 6);
+
+            //play audio
+
+
+            playerDamagedEvent?.Invoke(CharacterLife);
+
+            if (CharacterLife == 0)
+            {
+                Die();
+            }
+            StartCoroutine("InvincibleTimer");
+        }
+    }
+
+    private IEnumerator InvincibleTimer()
+    {
+        invincible = true;
+        yield return new WaitForSeconds(invincibleTime);
+        invincible = false;
     }
 }

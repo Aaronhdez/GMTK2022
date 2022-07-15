@@ -10,5 +10,5 @@ public abstract class CharacterController: MonoBehaviour {
     public abstract void Move();
     public abstract void Attack();
     public abstract void Die();
-    public abstract void TakeDamage();
+    public abstract void TakeDamage(int damage);
 }
