@@ -18,9 +18,9 @@ public class SpawnManager : MonoBehaviour
 
     private List<GameObject> _enemiesLoaded;
     private float lastTimeEnemiesWereSpawned = 0;
-    private bool _spawningEnabled;
+    private bool _spawningEnabled = false;
 
-    public void StartSpawnRoutine(){
+    public void StartSpawnManager(){
         _spawningEnabled = true;
         InstantiateEntities();
         SpawnEnemies();
