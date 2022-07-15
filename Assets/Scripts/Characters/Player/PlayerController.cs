@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour, ICharacterController {
-
+public class PlayerController : CharacterController
+{
     // Start is called before the first frame update
     void Start()
     {
@@ -19,15 +19,18 @@ public class PlayerController : MonoBehaviour, ICharacterController {
     float movementSpeed = 5f; //Placeholder
     float deltaTimeVar = 60f; //placeHolder
     
-    public void Attack() {
+
+    public override void Attack()
+    {
         throw new System.NotImplementedException();
     }
 
-    public void Die() {
+    public override void Die()
+    {
         throw new System.NotImplementedException();
     }
 
-    public void Move() {
+    public override void Move() {
 
 
         // convert mouse position into world coordinates
@@ -61,5 +64,10 @@ public class PlayerController : MonoBehaviour, ICharacterController {
 
         //Rotacion 
  
+    }
+
+    public override void TakeDamage()
+    {
+        throw new System.NotImplementedException();
     }
 }
