@@ -14,9 +14,7 @@ public class PlayerController : CharacterController
         Move();
     }
 
-    float movementSpeed = 5f; //Placeholder
-    float deltaTimeVar = 60f; //placeHolder
-    
+    float movementSpeed = 5f; 
 
     public override void Attack()
     {
@@ -30,12 +28,18 @@ public class PlayerController : CharacterController
 
     public override void Move() {
 
+        //Rotacion 
 
-        // convert mouse position into world coordinates
-        Vector2 mouseScreenPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        //Get the Screen positions of the object
+        Vector2 positionOnScreen = Camera.main.WorldToViewportPoint(transform.position);
 
-        // set vector of transform directly
-        transform.up = mouseScreenPosition;
+        //Get the Screen position of the mouse
+        Vector2 mouseOnScreen = (Vector2)Camera.main.ScreenToViewportPoint(Input.mousePosition);
+
+        //Get the angle between the points
+        float angle = Mathf.Atan2(positionOnScreen.y - mouseOnScreen.y, positionOnScreen.x - mouseOnScreen.x) * Mathf.Rad2Deg;
+
+        transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, angle + 90.0f));
 
 
         //Direcciones
@@ -58,10 +62,7 @@ public class PlayerController : CharacterController
         if (Input.GetKey(KeyCode.S)) //Si el jugador tiene el boton "S" pulsado 
         {
             transform.Translate(Vector2.down * movementSpeed * Time.deltaTime, Space.World); //Se mueve hacia abajo
-        }
-
-        //Rotacion 
- 
+        } 
     }
 
     public override void TakeDamage()
