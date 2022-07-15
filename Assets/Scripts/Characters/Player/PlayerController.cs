@@ -13,6 +13,8 @@ public class PlayerController : CharacterController
     [SerializeField]
     private float invincibleTime;
 
+    private bool dead = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,12 +25,21 @@ public class PlayerController : CharacterController
     // Update is called once per frame
     void Update()
     {
-        Move();
+        if (!dead)
+        {
+            Move();
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("Taking damage");
+        TakeDamage(1);
     }
 
     float movementSpeed = 5f; //Placeholder
     float deltaTimeVar = 60f; //placeHolder
-    
+
 
     public override void Attack()
     {
@@ -37,10 +48,17 @@ public class PlayerController : CharacterController
 
     public override void Die()
     {
-        throw new System.NotImplementedException();
+        Debug.Log("Player dead");
+        dead = true;
+
+        //Diying animation and sound
+
+        //GameOver screen
+
     }
 
-    public override void Move() {
+    public override void Move()
+    {
 
 
         // convert mouse position into world coordinates
@@ -73,7 +91,7 @@ public class PlayerController : CharacterController
         }
 
         //Rotacion 
- 
+
     }
 
     public override void TakeDamage(int damage)
@@ -86,6 +104,11 @@ public class PlayerController : CharacterController
 
 
             playerDamagedEvent?.Invoke(CharacterLife);
+
+            if (CharacterLife == 0)
+            {
+                Die();
+            }
             StartCoroutine("InvincibleTimer");
         }
     }
