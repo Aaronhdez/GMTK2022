@@ -10,8 +10,9 @@ public class CheckIfPlayerIsOnAttackRange : Node {
         _agent = agent;
         _controller = agent.GetComponent<CharacterController>();
     }
+
     public override NodeState Evaluate() {
-        var _player = GameObject.Find("Player").transform;
+        var _player = GameObject.FindWithTag("Player").transform;
 
         if (Vector2.Distance(_player.position, _agent.transform.position) < 1) { 
             //_controller.GetAttackDistance()) {
