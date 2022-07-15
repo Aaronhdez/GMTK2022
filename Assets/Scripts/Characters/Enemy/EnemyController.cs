@@ -15,6 +15,7 @@ public class EnemyController : MonoBehaviour, ICharacterController {
     {
 
     }
+
     public void Attack() {
         throw new System.NotImplementedException();
     }
@@ -26,4 +27,5 @@ public class EnemyController : MonoBehaviour, ICharacterController {
     public void Move() {
         throw new System.NotImplementedException();
     }
+
 }

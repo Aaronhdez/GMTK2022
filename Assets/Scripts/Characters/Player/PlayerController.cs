@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour, ICharacterController {
     {
 
     }
+
     public void Attack() {
         throw new System.NotImplementedException();
     }
