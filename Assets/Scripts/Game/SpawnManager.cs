@@ -27,12 +27,6 @@ public class SpawnManager : MonoBehaviour
         ReloadSpawnRate();
     }
 
-    public void Update() {
-        if (_spawningEnabled) { 
-            CheckSpawnEnemies();
-        }
-    }
-
     private void InstantiateEntities() {
         for (int i = 0; i < _enemiesAvailable.Count; i++) {
             for (int j = 0; j < _enemiesAvailable.Count; j++) {
@@ -55,9 +49,25 @@ public class SpawnManager : MonoBehaviour
 
     }
 
+    private void Activate(GameObject gameObject) {
+        //REVISAR IN-GAME
+        //Por si queremos desactivar spawnpoins en funcion de donde este el player
+        var availableSpawnPoints = _spawnPoints.Where(s => !s.activeInHierarchy).ToList();
+        var index = UnityEngine.Random.Range(0, _spawnPoints.Count);
+        gameObject.transform.position = availableSpawnPoints[index].transform.position;
+        //Rotar respecto a centro (opcional)
+        gameObject.SetActive(true);
+    }
+
     private void ReloadSpawnRate() {
         _maximumSpawnRate = UnityEngine.Random.Range(
             _minimumSpawnRate, _maximumSpawnRate);
+    }
+
+    public void Update() {
+        if (_spawningEnabled) {
+            CheckSpawnEnemies();
+        }
     }
 
     private void CheckSpawnEnemies() {
@@ -67,13 +77,6 @@ public class SpawnManager : MonoBehaviour
             lastTimeEnemiesWereSpawned = currentTime;
             ReloadSpawnRate();
         }
-    }
-
-    private void Activate(GameObject gameObject) {
-        var index = UnityEngine.Random.Range(0, _spawnPoints.Count);
-        gameObject.transform.position = _spawnPoints[index].transform.position;
-        //Rotar respecto a centro (opcional)
-        gameObject.SetActive(true);
     }
 
 }
