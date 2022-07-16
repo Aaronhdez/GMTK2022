@@ -51,13 +51,12 @@ public class MC_Dice : MonoBehaviour
     void Start()
     {
 
-        addWeapon(0); //PlaceHolder
-        addWeapon(1); //PlaceHolder
-        addWeapon(4); //PlaceHolder
-        addWeapon(3);
-        addWeapon(2);
+        addWeapon(0); //Empezamos con la espada
         addWeapon(1);
-        ActiveWeapon(0);
+        addWeapon(2);
+        addWeapon(3);
+        addWeapon(4);
+        ActiveWeapon(0); //La activamos
     }
 
  
@@ -81,14 +80,15 @@ public class MC_Dice : MonoBehaviour
 
     public int RandomWeapon()
     {
-        OldNumber = number; //Guardamos el resultado anterior
+        
         do
         {
             OldNumber = number; //Guardamos el resultado anterior
             number = Random.Range(0, 6); //elegimos numero al azar 
             
         }
-        while (number == OldNumber && number > Weapons.Count);
+        while (number > Weapons.Count-1 || OldNumber == number);
+        OldNumber = number; //Guardamos el resultado anterior
         return number; //devuelve el numero
     }
 
@@ -128,8 +128,12 @@ public class MC_Dice : MonoBehaviour
     public void timerEnded()
     {
         ArrayInt = RandomWeapon();
-        int weapon = (int)Weapons[ArrayInt];
-        ActiveWeapon(weapon);
+        if (ArrayInt < Weapons.Count)
+        {
+            int weapon = (int)Weapons[ArrayInt];
+            ActiveWeapon(weapon);
+        }
+        
         
     }
 
