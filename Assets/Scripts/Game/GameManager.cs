@@ -6,8 +6,10 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     SpawnManager _spawnManager;
-    public TimerController _timerController;
-    UIController _uIController;
+    UIController _uiController;
+    SoundController _soundController;
+    TimerController _timerController;
+
     [SerializeField] private bool _gameStarted = false;
     [SerializeField] private bool _gamePaused = false;
 
@@ -36,7 +38,8 @@ public class GameManager : MonoBehaviour
     private void LoadEntities() {
         _spawnManager = GetComponent<SpawnManager>();
         _timerController = GetComponent<TimerController>();
-        _uIController = GetComponent<UIController>();
+        _uiController = GetComponent<UIController>();
+        _soundController = GetComponent<SoundController>();
     }
 
     private void SetUpGame() {
@@ -68,7 +71,7 @@ public class GameManager : MonoBehaviour
         playerMovementLocked = false;
         Time.timeScale = 1f;
         _timerController.Resume();
-        _uIController.Activate("GameScreen");
+        _uiController.Activate("GameScreen");
     }
 
     private void PauseGame() {
@@ -76,7 +79,7 @@ public class GameManager : MonoBehaviour
         playerMovementLocked = true;
         Time.timeScale = 0f;
         _timerController.Pause();
-        _uIController.Activate("PauseScreen");
+        _uiController.Activate("PauseScreen");
     }
 
     public void AddScore(int score)
