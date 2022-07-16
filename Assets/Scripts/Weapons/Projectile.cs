@@ -8,6 +8,8 @@ public abstract class Projectile : MonoBehaviour
 
     public float speed = 3f;
 
+    public bool isEnemy = false;
+
     private void Start()
     {
         Destroy(gameObject, 20);
@@ -35,6 +37,14 @@ public abstract class Projectile : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (isEnemy)
+        {
+            if (collision.transform.CompareTag("Player"))
+            {
+                collision.gameObject.GetComponent<CharacterController>().TakeDamage(damage);
+            }
+        }
+        else
         // TODO: Check active tag on dice
         if (collision.transform.CompareTag("orc"))
         {
