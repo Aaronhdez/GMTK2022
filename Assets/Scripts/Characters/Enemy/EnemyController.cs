@@ -13,22 +13,22 @@ public class EnemyController : CharacterController {
     }
     public override void Attack()
     {
-        throw new System.NotImplementedException();
+        
     }
 
     public override void Die()
     {
-        throw new System.NotImplementedException();
+        gameObject.SetActive(false);
     }
 
     public override void Move()
     {
-        throw new System.NotImplementedException();
+        
     }
 
     public override void TakeDamage(int damage)
     {
-        throw new System.NotImplementedException();
+        CharacterLife -= damage;
     }
 
 }

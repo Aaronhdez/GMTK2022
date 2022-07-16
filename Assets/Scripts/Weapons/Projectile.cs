@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class Projectile : MonoBehaviour
 {
-    public float damage = 1f;
+    public int damage = 1;
 
     public float speed = 3f;
 
@@ -18,15 +18,14 @@ public abstract class Projectile : MonoBehaviour
         transform.Translate(Vector3.up * speed * Time.deltaTime);
     }
 
-    public abstract void Attack();
+    public abstract void Attack(GameObject enemy);
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         // TODO: Check active tag on dice
         if (collision.transform.CompareTag("orc"))
         {
-            // TODO: damage enemy
-            Attack();
+            Attack(collision.gameObject);
         }
     }
 }
