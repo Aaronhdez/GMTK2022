@@ -8,6 +8,8 @@ public abstract class CharacterController: MonoBehaviour {
     public int characterLife;
     public float characterMovementSpeed;
     public bool dead;
+    public Rigidbody2D rb;
+    public Vector2 _speed;
 
     public abstract void Move();
     public abstract float GetAttackDistance();

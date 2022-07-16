@@ -17,6 +17,9 @@ public class EnemyController : CharacterController {
     {
         _defaultCharacterLife = characterLife;
         _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+
+        rb = GetComponent<Rigidbody2D>();
+        _speed = new Vector2(0, 0);
     }
 
     // Update is called once per frame
@@ -44,6 +47,14 @@ public class EnemyController : CharacterController {
     public override void Move()
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
+        _speed.x = Input.GetAxisRaw("Horizontal");
+        _speed.y = Input.GetAxisRaw("Vertical");
+        _speed.Normalize();
+        _speed *= characterMovementSpeed * Time.deltaTime;
+
+        rb.velocity = _speed;
+
+        rb.MovePosition(rb.position + _speed);
 
         transform.Translate((player.transform.position - transform.position).normalized * characterMovementSpeed * Time.deltaTime);
     }
