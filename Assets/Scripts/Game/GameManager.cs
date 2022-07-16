@@ -6,11 +6,14 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
-    CharacterController _player;
-    SpawnManager _spawnManager;
-    TimerController _timerController;
-    UIController _uiController;
-    SoundManager _soundController;
+    [Header("Entities")]
+    [SerializeField] CharacterController _player;
+    [SerializeField] SpawnManager _spawnManager;
+    [SerializeField] TimerController _timerController;
+    [SerializeField] UIController _uiController;
+    [SerializeField] SoundManager _soundController;
+    [SerializeField] public DiceController _weaponsDiceController;
+    [SerializeField] public DiceController _enemiesDiceController;
 
     [SerializeField] private bool _gameStarted = false;
     [SerializeField] private bool _gamePaused = false;
@@ -44,6 +47,8 @@ public class GameManager : MonoBehaviour {
         _timerController = GetComponent<TimerController>();
         _uiController = GetComponent<UIController>();
         _soundController = GetComponent<SoundManager>();
+        _enemiesDiceController.DisableDice();
+        _weaponsDiceController.DisableDice();
     }
 
     private void SetUpGame() {
@@ -64,6 +69,8 @@ public class GameManager : MonoBehaviour {
             _timerController.StartTimer();
             _soundController.PlayGameMusic();
             _spawnManager.StartSpawnManager();
+            _enemiesDiceController.EnableDice();
+            _weaponsDiceController.EnableDice();
         }
 
         if (_gameStarted) { 
@@ -82,6 +89,8 @@ public class GameManager : MonoBehaviour {
         Time.timeScale = 1f;
         _timerController.Resume();
         _uiController.Activate("GameScreen");
+        _enemiesDiceController.EnableDice();
+        _weaponsDiceController.EnableDice();
     }
 
     private void PauseGame() {
@@ -89,6 +98,8 @@ public class GameManager : MonoBehaviour {
         playerMovementLocked = true;
         Time.timeScale = 0f;
         _timerController.Pause();
+        _enemiesDiceController.DisableDice();
+        _weaponsDiceController.DisableDice();
         _uiController.Activate("PauseScreen");
     }
 
@@ -97,6 +108,8 @@ public class GameManager : MonoBehaviour {
         playerMovementLocked = true;
         Time.timeScale = 0f;
         _timerController.Pause();
+        _enemiesDiceController.DisableDice();
+        _weaponsDiceController.DisableDice();
         _soundController.PlayGameOverMusic();
         _gameOverInfo.text = "You have survived " + _timerController.GetCurrentTime() + " and scored " + score + " points.";
         _uiController.Activate("GameOverScreen");

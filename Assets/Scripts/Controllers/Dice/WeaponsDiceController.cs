@@ -13,6 +13,7 @@ public class WeaponsDiceController : DiceController {
     [SerializeField] private int _weaponIndex = 0;
 
     void Start() {
+        IsActive = false;
         DisableAllWeapons();
         RollTheDice();
         _diceUIController.SetUp(0);
@@ -20,11 +21,13 @@ public class WeaponsDiceController : DiceController {
     }
 
     void Update() {
-        _rollTime -= Time.deltaTime;
-        if (_rollTime <= 0.0f) {
-            _rollTime = 10.0f;
-            RollTheDice();
-            //Reproducir Sonido
+        if (IsActive) { 
+            _rollTime -= Time.deltaTime;
+            if (_rollTime <= 0.0f) {
+                _rollTime = 10.0f;
+                RollTheDice();
+                //Reproducir Sonido
+            }
         }
     }
 
@@ -39,9 +42,9 @@ public class WeaponsDiceController : DiceController {
     public override void RollTheDice() {
         DisableAllWeapons();
         _weaponIndex = GetRandomWeaponIndex();
+        _diceUIController.RollingAnimation(_weaponIndex);
         _playerController.SetWeapon(_weaponsAvailable[_weaponIndex]);
         _weaponsAvailable[_weaponIndex].gameObject.SetActive(true);
-        _diceUIController.RollingAnimation(_weaponIndex);
     }
 
     //AUXILIARY METHODS
@@ -49,6 +52,14 @@ public class WeaponsDiceController : DiceController {
         foreach (Weapon weapon in _weaponsAvailable) {
             weapon.gameObject.SetActive(false);
         }
+    }
+
+    public override void EnableDice() {
+        IsActive = true;
+    }
+
+    public override void DisableDice() {
+        IsActive = false;
     }
 
     //TO DO
