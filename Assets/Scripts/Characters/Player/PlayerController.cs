@@ -6,6 +6,8 @@ using UnityEngine;
 public class PlayerController : CharacterController
 {
 
+    float movementSpeed = 5f;
+
     public event Action<int> playerDamagedEvent;
 
     [SerializeField]
@@ -37,9 +39,6 @@ public class PlayerController : CharacterController
         Debug.Log("Taking damage");
         TakeDamage(1);
     }
-
-    float movementSpeed = 5f;
-
 
     public override void Attack()
     {
@@ -76,25 +75,29 @@ public class PlayerController : CharacterController
 
         //Direcciones
 
+        Vector2 dir = Vector2.zero;
+
         if (Input.GetKey(KeyCode.D)) //Si el jugador tiene el boton "D" pulsado 
         {
-            transform.Translate(Vector2.right * movementSpeed * Time.deltaTime, Space.World); //Se mueve a la derecha
+            dir += Vector2.right; //Se mueve a la derecha
         }
 
         if (Input.GetKey(KeyCode.A)) //Si el jugador tiene el boton "A" pulsado 
         {
-            transform.Translate(Vector2.left * movementSpeed * Time.deltaTime, Space.World); //Se mueve hacia la izquierda
+            dir += Vector2.left; //Se mueve hacia la izquierda
         }
 
         if (Input.GetKey(KeyCode.W)) //Si el jugador tiene el boton "W" pulsado 
         {
-            transform.Translate(Vector2.up * movementSpeed * Time.deltaTime, Space.World); //Se mueve hacia arriba
+            dir += Vector2.up; //Se mueve hacia arriba
         }
 
         if (Input.GetKey(KeyCode.S)) //Si el jugador tiene el boton "S" pulsado 
         {
-            transform.Translate(Vector2.down * movementSpeed * Time.deltaTime, Space.World); //Se mueve hacia abajo
+            dir += Vector2.down; //Se mueve hacia abajo
         }
+
+        transform.Translate(dir.normalized * movementSpeed * Time.deltaTime, Space.World);
     }
 
     public override void TakeDamage(int damage)
