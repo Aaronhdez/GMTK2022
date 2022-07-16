@@ -176,6 +176,10 @@ PrefabInstance:
       propertyPath: isEnemy
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2204019170856204280, guid: f3242c599cc11f04da6393e7ddd48e84, type: 3}
+      propertyPath: attackRate
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2204019170856204281, guid: f3242c599cc11f04da6393e7ddd48e84, type: 3}
       propertyPath: m_RootOrder
       value: 0

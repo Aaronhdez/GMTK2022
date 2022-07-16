@@ -16,8 +16,12 @@ public class Bow : Weapon
             return;
         }
         GameObject projectile = Instantiate(arrowGO, spawnPoint.position, spawnPoint.rotation);
-        projectile.GetComponent<Projectile>().isEnemy = isEnemy;
-        if(isEnemy){
+
+        if (isEnemy)
+        {
+            int LayerEnemyBullets = LayerMask.NameToLayer("EnemyBullets");
+            projectile.layer = LayerEnemyBullets;
+            projectile.GetComponent<Projectile>().isEnemy = isEnemy;
             fireWithBow.Play();
         }
     }

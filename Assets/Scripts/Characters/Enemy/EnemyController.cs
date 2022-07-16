@@ -36,6 +36,11 @@ public class EnemyController : CharacterController {
     public override void Attack()
     {
         weapon.Attack();
+
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+
+        float angle = Mathf.Atan2(player.transform.position.y - transform.position.y, player.transform.position.x - transform.position.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, angle - 90f));
     }
 
     public override void Die()
