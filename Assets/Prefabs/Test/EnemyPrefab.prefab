@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 3403337724187575321}
   - component: {fileID: 6327601780462366399}
   - component: {fileID: 314862113896237716}
+  - component: {fileID: 2657439037394081763}
+  - component: {fileID: 4937685522845826932}
   m_Layer: 0
   m_Name: EnemyPrefab
   m_TagString: Untagged
@@ -113,5 +115,42 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CharacterLife: 1
-  CharacterMovementSpeed: 3
+  CharacterMovementSpeed: 5
   _defaultCharacterLife: 1
+--- !u!58 &2657439037394081763
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7558021017037037513}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
+--- !u!50 &4937685522845826932
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7558021017037037513}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

@@ -27,7 +27,9 @@ public class EnemyController : CharacterController {
 
     public override void Move()
     {
-        
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+
+        transform.Translate((player.transform.position - transform.position).normalized * CharacterMovementSpeed * Time.deltaTime);
     }
 
     public override void TakeDamage(int damage)
