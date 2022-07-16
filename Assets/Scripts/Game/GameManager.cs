@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
     }
 
     private void SetUpGame() {
-        _spawnManager.StartSpawnManager();
+        _spawnManager.LoadSpawnManager();
     }
 
 
@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
         if (!_gameStarted && Input.GetKeyDown(KeyCode.Return)) {
             _gameStarted = true;
             _timerController.StartTimer();
+            _spawnManager.StartSpawnManager();
         }
 
         if (_gameStarted) { 
