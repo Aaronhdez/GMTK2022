@@ -17,6 +17,9 @@ public class EnemyController : CharacterController {
     {
         _defaultCharacterLife = characterLife;
         _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+
+        rb = GetComponent<Rigidbody2D>();
+        _speed = new Vector2(0, 0);
     }
 
     // Update is called once per frame
@@ -54,6 +57,14 @@ public class EnemyController : CharacterController {
         }
 
         GameObject player = GameObject.FindGameObjectWithTag("Player");
+        _speed.x = Input.GetAxisRaw("Horizontal");
+        _speed.y = Input.GetAxisRaw("Vertical");
+        _speed.Normalize();
+        _speed *= characterMovementSpeed * Time.deltaTime;
+
+        rb.velocity = _speed;
+
+        rb.MovePosition(rb.position + _speed);
 
         float angle = Mathf.Atan2(player.transform.position.y - transform.position.y, player.transform.position.x - transform.position.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, angle - 90f));
