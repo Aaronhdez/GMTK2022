@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OrcController : EnemyController
+public class WitchController : EnemyController
 {
     public override void Attack()
     {
