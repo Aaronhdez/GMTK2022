@@ -25,6 +25,7 @@ public class Sword : Weapon
                 if (enemy.CompareTag("Player"))
                 {
                     enemy.GetComponent<CharacterController>().TakeDamage(damage);
+                    hitWithSword.Play();
                 }
             } else
             if (enemy.CompareTag(EnemiesDiceController.instance._currentEnemy) || EnemiesDiceController.instance.AttackAll)
