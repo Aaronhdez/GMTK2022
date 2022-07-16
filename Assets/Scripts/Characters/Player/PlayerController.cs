@@ -122,4 +122,9 @@ public class PlayerController : CharacterController
         yield return new WaitForSeconds(invincibleTime);
         invincible = false;
     }
+
+    public override float GetAttackDistance()
+    {
+        return 1;
+    }
 }

@@ -16,10 +16,18 @@ public class Dagger : Weapon
 
         foreach (Transform attackPoint in attackPoints)
         {
-            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange);
+            Collider2D[] hitEnemies = (isEnemy) ? Physics2D.OverlapCircleAll(attackPoint.position, attackRange, LayerMask.GetMask("Player")) : Physics2D.OverlapCircleAll(attackPoint.position, attackRange, LayerMask.GetMask("Enemy"));
 
             foreach (Collider2D enemy in hitEnemies)
             {
+                if (isEnemy)
+                {
+                    if (enemy.CompareTag("Player"))
+                    {
+                        enemy.GetComponent<CharacterController>().TakeDamage(damage);
+                    }
+                }
+                else
                 // TODO: Check active tag on dice
                 if (enemy.CompareTag("orc"))
                 {
