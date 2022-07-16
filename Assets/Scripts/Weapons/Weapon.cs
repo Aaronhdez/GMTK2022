@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class Weapon : MonoBehaviour
 {
-    public float damage = 1f;
+    public int damage = 1;
 
     public float attackRate = 1f;
     protected float nextAttactTime = 0f;

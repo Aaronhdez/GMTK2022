@@ -21,7 +21,7 @@ public class Axe : Weapon
             // TODO: Check active tag on dice
             if (enemy.CompareTag("orc"))
             {
-                // TODO: damage enemy
+                enemy.GetComponent<CharacterController>().TakeDamage(damage);
             }
         }
     }
