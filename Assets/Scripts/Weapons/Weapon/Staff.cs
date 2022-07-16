@@ -15,6 +15,12 @@ public class Staff : Weapon
         }
 
         GameObject projectile = Instantiate(fireballGO, spawnPoint.position, spawnPoint.rotation);
-        projectile.GetComponent<Projectile>().isEnemy = isEnemy;
+
+        if (isEnemy)
+        {
+            int LayerEnemyBullets = LayerMask.NameToLayer("EnemyBullets");
+            projectile.layer = LayerEnemyBullets;
+            projectile.GetComponent<Projectile>().isEnemy = isEnemy;
+        }
     }
 }

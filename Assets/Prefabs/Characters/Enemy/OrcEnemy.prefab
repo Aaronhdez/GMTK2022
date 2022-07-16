@@ -222,6 +222,10 @@ PrefabInstance:
       propertyPath: isEnemy
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7626845857262983313, guid: 99ad58824aa6cef4881271e7fbb302ea, type: 3}
+      propertyPath: attackRate
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7626845857262983314, guid: 99ad58824aa6cef4881271e7fbb302ea, type: 3}
       propertyPath: m_Name
       value: Sword
