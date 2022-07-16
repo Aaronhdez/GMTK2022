@@ -6,9 +6,10 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     SpawnManager _spawnManager;
-    UIController _uiController;
-    SoundController _soundController;
     TimerController _timerController;
+    UIController _uIController;
+
+    CharacterController _player;
 
     [SerializeField] private bool _gameStarted = false;
     [SerializeField] private bool _gamePaused = false;
@@ -36,6 +37,7 @@ public class GameManager : MonoBehaviour
     }
 
     private void LoadEntities() {
+        _player = GameObject.FindWithTag("Player").GetComponent<CharacterController>();
         _spawnManager = GetComponent<SpawnManager>();
         _timerController = GetComponent<TimerController>();
         _uiController = GetComponent<UIController>();
@@ -49,6 +51,11 @@ public class GameManager : MonoBehaviour
 
 
     void Update() {
+        if (_player.CharacterLife == 0)
+        {
+            GameOver();
+        }
+
         if (!_gameStarted && Input.GetKeyDown(KeyCode.Return)) {
             _gameStarted = true;
             playerMovementLocked = false;
@@ -80,6 +87,15 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0f;
         _timerController.Pause();
         _uiController.Activate("PauseScreen");
+    }
+
+    private void GameOver()
+    {
+        _gamePaused = true;
+        playerMovementLocked = true;
+        Time.timeScale = 0f;
+        _timerController.Pause();
+        _uIController.Activate("GameOverScreen");
     }
 
     public void AddScore(int score)
