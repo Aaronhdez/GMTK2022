@@ -7,14 +7,6 @@ public class Staff : Weapon
     public Transform spawnPoint;
     public GameObject fireballGO;
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Attack();
-        }
-    }
-
     public override void Attack()
     {
         if (!Cooldown())
@@ -22,6 +14,7 @@ public class Staff : Weapon
             return;
         }
 
-        Instantiate(fireballGO, spawnPoint.position, spawnPoint.rotation);
+        GameObject projectile = Instantiate(fireballGO, spawnPoint.position, spawnPoint.rotation);
+        projectile.GetComponent<Projectile>().isEnemy = isEnemy;
     }
 }

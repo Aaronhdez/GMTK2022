@@ -8,7 +8,8 @@ TagManager:
   - skeleton
   - witch
   - beast
-  - oggre
+  - ogre
+  - all
   layers:
   - Default
   - TransparentFX
@@ -17,7 +18,7 @@ TagManager:
   - Water
   - UI
   - Player
-  - 
+  - Enemy
   - 
   - 
   - 

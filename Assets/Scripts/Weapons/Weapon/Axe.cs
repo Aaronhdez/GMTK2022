@@ -27,51 +27,11 @@ public class Axe : Weapon
             }
             else
             {
-                switch (MC_Enemies.instance.CurrentEnemy)
+                if (enemy.CompareTag(MC_Enemies.instance.CurrentEnemy) || MC_Enemies.instance.CanAttackAll())
                 {
-                    case 0:
-                        if (enemy.CompareTag("orc"))
-                        {
-                            enemy.GetComponent<CharacterController>().TakeDamage(damage);
-                        }
-                        break;
-                    case 1:
-                        if (enemy.CompareTag("skeleton"))
-                        {
-                            enemy.GetComponent<CharacterController>().TakeDamage(damage);
-                        }
-                        break;
-                    case 2:
-                        if (enemy.CompareTag("beast"))
-                        {
-                            enemy.GetComponent<CharacterController>().TakeDamage(damage);
-                        }
-                        break;
-                    case 3:
-                        if (enemy.CompareTag("witch"))
-                        {
-                            enemy.GetComponent<CharacterController>().TakeDamage(damage);
-                        }
-                        break;
-                    case 4:
-                        if (enemy.CompareTag("ogger"))
-                        {
-                            enemy.GetComponent<CharacterController>().TakeDamage(damage);
-                        }
-                        break;
-                    case 5:
-                        if (enemy)
-                        {
-                            enemy.GetComponent<CharacterController>().TakeDamage(damage);
-                        }
-                        break;
-                    default:
-                        break;
-
+                    enemy.GetComponent<CharacterController>().TakeDamage(damage);
                 }
-            }
-            // TODO: Check active tag on dice
-            
+            }            
         }
     }
 

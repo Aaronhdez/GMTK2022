@@ -6,7 +6,6 @@ public abstract class Projectile : MonoBehaviour
 {
     public int damage = 1;
     public float speed = 3f;
-    public MC_Enemies Dice;
 
     public bool isEnemy = false;
 
@@ -24,74 +23,26 @@ public abstract class Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // TODO: Check active tag on dice
-        switch (MC_Enemies.instance.CurrentEnemy)
+        if (isEnemy)
         {
-            case 0:
-            if (collision.transform.CompareTag("orc"))
-                {
-                    Attack(collision.gameObject);
-                }
-                else
-                {
-                    Destroy(gameObject);
-                }
-                break;
-            case 1:
-            if (collision.transform.CompareTag("skeleton"))
-                {
-                    Attack(collision.gameObject);
-                }
-                else
-                {
-                    Destroy(gameObject);
-                }
-                break;
-            case 2:
-                if (collision.transform.CompareTag("beast"))
-                {
-                    Attack(collision.gameObject);
-                }
-                else
-                {
-                    Destroy(gameObject);
-                }
-                break;
-            case 3:
-                if (collision.transform.CompareTag("witch"))
-                {
-                    Attack(collision.gameObject);
-                }
-                else
-                {
-                    Destroy(gameObject);
-                }
-                break;
-            case 4:
-                if (collision.transform.CompareTag("ogger"))
-                {
-                    Attack(collision.gameObject);
-                }
-                else
-                {
-                    Destroy(gameObject);
-                }
-                break;
-            case 5:
-                if (collision.transform)
-                {
-                    Attack(collision.gameObject);
-                }
-                else
-                {
-                    Destroy(gameObject);
-                }
-                break;
-             default:
-                break;
-
+            if (collision.transform.CompareTag("Player"))
+            {
+                collision.gameObject.GetComponent<CharacterController>().TakeDamage(damage);
+            }
+            Destroy(gameObject);
         }
-        
+        else
+        {
+            if (collision.transform.CompareTag(MC_Enemies.instance.CurrentEnemy) || MC_Enemies.instance.CanAttackAll())
+            {
+                Attack(collision.gameObject);
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+        }
+
     }
 
 
@@ -102,74 +53,18 @@ public abstract class Projectile : MonoBehaviour
             if (collision.transform.CompareTag("Player"))
             {
                 collision.gameObject.GetComponent<CharacterController>().TakeDamage(damage);
+                Destroy(gameObject);
             }
         }
         else
         {
-            switch (MC_Enemies.instance.CurrentEnemy)
+            if (collision.transform.CompareTag(MC_Enemies.instance.CurrentEnemy) || MC_Enemies.instance.CanAttackAll())
             {
-                case 0:
-                    if (collision.transform.CompareTag("orc"))
-                    {
-                        Attack(collision.gameObject);
-                    }
-                    else
-                    {
-                        Destroy(gameObject);
-                    }
-                    break;
-                case 1:
-                    if (collision.transform.CompareTag("skeleton"))
-                    {
-                        Attack(collision.gameObject);
-                    }
-                    else
-                    {
-                        Destroy(gameObject);
-                    }
-                    break;
-                case 2:
-                    if (collision.transform.CompareTag("beast"))
-                    {
-                        Attack(collision.gameObject);
-                    }
-                    else
-                    {
-                        Destroy(gameObject);
-                    }
-                    break;
-                case 3:
-                    if (collision.transform.CompareTag("witch"))
-                    {
-                        Attack(collision.gameObject);
-                    }
-                    else
-                    {
-                        Destroy(gameObject);
-                    }
-                    break;
-                case 4:
-                    if (collision.transform.CompareTag("ogger"))
-                    {
-                        Attack(collision.gameObject);
-                    }
-                    else
-                    {
-                        Destroy(gameObject);
-                    }
-                    break;
-                case 5:
-                    if (collision.transform)
-                    {
-                        Attack(collision.gameObject);
-                    }
-                    else
-                    {
-                        Destroy(gameObject);
-                    }
-                    break;
-                default:
-                    break;
+                Attack(collision.gameObject);
+            }
+            else
+            {
+                Destroy(gameObject);
             }
         }
     }
