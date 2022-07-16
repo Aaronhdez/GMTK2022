@@ -52,12 +52,6 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
-    private int GetAmountToSpawn(List<GameObject> nonActiveEnemies) {
-        return (nonActiveEnemies.Count > _amountOfEnemiesSpawnedAtOnce) ?
-            _amountOfEnemiesSpawnedAtOnce :
-            UnityEngine.Random.Range(1, nonActiveEnemies.Count); 
-    }
-
     private void ActivateEnemy(GameObject gameObject) {
         var availableSpawnPoints = _spawnPoints.Where(
             s => s.GetComponent<SpawnPointController>().IsActive).ToList();
@@ -91,6 +85,12 @@ public class SpawnManager : MonoBehaviour
 
     private bool ThereAreEnemiesToSpawn() {
         return _enemiesAvailable.Count != 0;
+    }
+
+    private int GetAmountToSpawn(List<GameObject> nonActiveEnemies) {
+        return (nonActiveEnemies.Count > _amountOfEnemiesSpawnedAtOnce) ?
+            _amountOfEnemiesSpawnedAtOnce :
+            UnityEngine.Random.Range(1, nonActiveEnemies.Count);
     }
 
 }
