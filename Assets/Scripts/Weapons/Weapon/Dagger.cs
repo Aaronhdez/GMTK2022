@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Dagger : Weapon
 {
+
     [SerializeField] public AudioSource hitWithDagger;
     public Transform[] attackPoints;
     public float attackRange = 0.5f;

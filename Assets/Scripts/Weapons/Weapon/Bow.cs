@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Bow : Weapon
 {
+
     [SerializeField] public AudioSource fireWithBow;
     public Transform spawnPoint;
     public GameObject arrowGO;

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Arrow : Projectile
 {
+
     [SerializeField] public AudioSource hitWithArrow;
     public override void Attack(GameObject enemy)
     {

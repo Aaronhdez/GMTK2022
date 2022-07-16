@@ -5,6 +5,7 @@ using UnityEngine;
 public class Fireball : Projectile
    
 {
+
     [SerializeField] public AudioSource hitWithFireBall;
     public override void Attack(GameObject enemy)
     {

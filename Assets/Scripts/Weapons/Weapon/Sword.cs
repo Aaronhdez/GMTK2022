@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Sword : Weapon
 {
-    
+
     [SerializeField] public AudioSource hitWithSword;
     public Transform attackPoint;
     public float attackRange = 0.5f;

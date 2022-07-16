@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Staff : Weapon
 {
+
     [SerializeField] public AudioSource fireWithStaff;
     public Transform spawnPoint;
     public GameObject fireballGO;
