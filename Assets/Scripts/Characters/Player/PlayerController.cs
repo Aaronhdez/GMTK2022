@@ -13,8 +13,6 @@ public class PlayerController : CharacterController
     [SerializeField]
     private float invincibleTime;
 
-    private bool dead = false;
-
     private GameManager _gameManager;
 
     [SerializeField]
@@ -24,6 +22,7 @@ public class PlayerController : CharacterController
     void Start()
     {
         CharacterLife = 6;
+        dead = false;
         _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
@@ -46,7 +45,7 @@ public class PlayerController : CharacterController
 
     public override void Attack()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             weapon.Attack();
         }

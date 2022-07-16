@@ -104,12 +104,7 @@ public class GameManager : MonoBehaviour {
 
     public void RestartGame()
     {
-        _gameOver = false;
-        _gamePaused = false;
-        _gameStarted = false;
-        playerMovementLocked = true;
-        _timerController.Restart();
-        _player.Revive();
+        Time.timeScale = 1f;
         SceneManager.LoadScene("MainScene");
     }
 
