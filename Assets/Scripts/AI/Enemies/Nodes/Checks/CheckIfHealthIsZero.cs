@@ -11,7 +11,7 @@ public class CheckIfHealthIsZero : Node {
     }
 
     public override NodeState Evaluate() {
-        if (_controller.CharacterLife <= 0) {
+        if (_controller.characterLife <= 0) {
             state = NodeState.SUCCESS;
             return state;
         }

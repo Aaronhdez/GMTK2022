@@ -23,7 +23,7 @@ public class PlayerController : CharacterController
     // Start is called before the first frame update
     void Start()
     {
-        CharacterLife = 6;
+        characterLife = 6;
         _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
@@ -104,7 +104,7 @@ public class PlayerController : CharacterController
                 dir += Vector2.down; //Se mueve hacia abajo
             }
 
-            transform.Translate(dir.normalized * CharacterMovementSpeed * Time.deltaTime, Space.World);
+            transform.Translate(dir.normalized * characterMovementSpeed * Time.deltaTime, Space.World);
         }
     }
 
@@ -112,14 +112,14 @@ public class PlayerController : CharacterController
     {
         if (!invincible)
         {
-            CharacterLife = Mathf.Clamp(CharacterLife - damage, 0, 6);
+            characterLife = Mathf.Clamp(characterLife - damage, 0, 6);
 
             //play audio
 
 
-            playerDamagedEvent?.Invoke(CharacterLife);
+            playerDamagedEvent?.Invoke(characterLife);
 
-            if (CharacterLife == 0)
+            if (characterLife == 0)
             {
                 Die();
             }

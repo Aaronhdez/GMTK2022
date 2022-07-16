@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponsDiceController : MonoBehaviour {
+public class WeaponsDiceController : DiceController {
 
     [Header("Entities")]
     [SerializeField] private List<Weapon> _weaponsAvailable;
@@ -10,7 +10,6 @@ public class WeaponsDiceController : MonoBehaviour {
 
     [Header("Parameters")]
     [SerializeField] private int _weaponIndex = 0;
-    [SerializeField] private float _rollTime = 10.0f;
     
     void Start() {
         DisableAllWeapons();
@@ -22,14 +21,9 @@ public class WeaponsDiceController : MonoBehaviour {
         _rollTime -= Time.deltaTime;
         if (_rollTime <= 0.0f) {
             RollTheDice();
+            //Reproducir Sonido
             _rollTime = 10.0f;
         }
-    }
-
-    public void RollTheDice() {
-        DisableAllWeapons();
-        _weaponIndex = GetRandomWeaponIndex();
-        _weaponsAvailable[_weaponIndex].gameObject.SetActive(true);
     }
 
     public int GetRandomWeaponIndex() {
@@ -38,6 +32,13 @@ public class WeaponsDiceController : MonoBehaviour {
             newIndex = UnityEngine.Random.Range(0, 11) % 5;
         }
         return newIndex;
+    }
+
+    public override void RollTheDice() {
+        DisableAllWeapons();
+        _weaponIndex = GetRandomWeaponIndex();
+        _weaponsAvailable[_weaponIndex].gameObject.SetActive(true);
+        //Actualizar Dado en la UI
     }
 
     //AUXILIARY METHODS

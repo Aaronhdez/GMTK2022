@@ -13,6 +13,6 @@ public class WitchController : EnemyController
 
         GameObject player = GameObject.FindGameObjectWithTag("Player");
 
-        transform.Translate((player.transform.position - transform.position).normalized * CharacterMovementSpeed * Time.deltaTime);
+        transform.Translate((player.transform.position - transform.position).normalized * characterMovementSpeed * Time.deltaTime);
     }
 }

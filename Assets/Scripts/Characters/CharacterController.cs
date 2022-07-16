@@ -5,8 +5,8 @@ using UnityEngine;
 
 public abstract class CharacterController: MonoBehaviour {
 
-    public int CharacterLife;
-    public float CharacterMovementSpeed;
+    public int characterLife;
+    public float characterMovementSpeed;
 
     public abstract void Move();
     public abstract float GetAttackDistance();

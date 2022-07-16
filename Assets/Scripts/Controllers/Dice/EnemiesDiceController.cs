@@ -3,15 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemiesDiceController : MonoBehaviour {
+public class EnemiesDiceController : DiceController {
     
     [Header("Entities")]
     [SerializeField] private List<string> _enemiesAvailable;
 
     [Header("Parameters")]
-    [SerializeField] public float rollTime = 5f;
-    [SerializeField] public string currentEnemy = "orc";
-    [SerializeField] public string enemy = "";
+    [SerializeField] public string currentEnemy;
     [SerializeField] private bool attackAll = false;
 
     public static EnemiesDiceController instance;
@@ -24,20 +22,18 @@ public class EnemiesDiceController : MonoBehaviour {
 
     void Start() {
         LoadEnemiesList();
+        currentEnemy = _enemiesAvailable[0];
         RollTheDice();
     }
 
     void Update() {
-        rollTime -= Time.deltaTime;
-        if (rollTime <= 0.0f) {
+        _rollTime -= Time.deltaTime;
+        if (_rollTime <= 0.0f) {
             RollTheDice();
-            rollTime = 5f;
+            //Reproducir Sonido
+            _rollTime = 5f;
         }
-        if (currentEnemy.Equals("all")) {
-            AttackAll = true;
-        } else {
-            AttackAll = false;
-        }
+        AttackAll = currentEnemy.Equals("all");
     }
     private void LoadEnemiesList() {
         _enemiesAvailable = new List<string> {
@@ -50,11 +46,15 @@ public class EnemiesDiceController : MonoBehaviour {
         };
     }
 
-    public void RollTheDice() {
-        while (enemy.Equals(currentEnemy)) {
-            enemy = _enemiesAvailable[UnityEngine.Random.Range(0, 12) % 6];
+    public override void RollTheDice() {
+        int newIndex = UnityEngine.Random.Range(0, 12) % 6;
+        var newEnemy = _enemiesAvailable[newIndex];
+        while (newEnemy.Equals(currentEnemy)) {
+            currentEnemy = _enemiesAvailable[UnityEngine.Random.Range(0, 12) % 6];
         }
-        currentEnemy = enemy;
+        currentEnemy = newEnemy;
+
+        //Actualizar el Dado en la UI;
     }
 
 }

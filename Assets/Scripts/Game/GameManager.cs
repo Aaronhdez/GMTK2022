@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour {
 
 
     void Update() {
-        if (!_gameOver && _player.CharacterLife == 0) {
+        if (!_gameOver && _player.characterLife == 0) {
             GameOver();
         }
 
