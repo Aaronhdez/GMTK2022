@@ -4,6 +4,9 @@ using UnityEngine;
 public class EnemyController : CharacterController {
     [SerializeField] private int _defaultCharacterLife;
 
+    public Weapon weapon;
+    public float attackRange;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -15,9 +18,15 @@ public class EnemyController : CharacterController {
     {
 
     }
+
+    public override float GetAttackDistance()
+    {
+        return attackRange;
+    }
+
     public override void Attack()
     {
-        
+        weapon.Attack();
     }
 
     public override void Die()
@@ -39,5 +48,10 @@ public class EnemyController : CharacterController {
 
     public void ResetToDefaults() {
         CharacterLife = _defaultCharacterLife;
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(weapon.transform.position, attackRange);
     }
 }

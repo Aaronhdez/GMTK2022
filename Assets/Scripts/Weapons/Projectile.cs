@@ -7,6 +7,9 @@ public abstract class Projectile : MonoBehaviour
     public int damage = 1;
     public float speed = 3f;
     public MC_Enemies Dice;
+
+    public bool isEnemy = false;
+
     private void Start()
     {
         Destroy(gameObject, 20);
@@ -162,3 +165,22 @@ public abstract class Projectile : MonoBehaviour
                 }
             }
         }
+        if (isEnemy)
+        {
+            if (collision.transform.CompareTag("Player"))
+            {
+                collision.gameObject.GetComponent<CharacterController>().TakeDamage(damage);
+            }
+        }
+        else
+        // TODO: Check active tag on dice
+        if (collision.transform.CompareTag("orc"))
+        {
+            Attack(collision.gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+}

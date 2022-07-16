@@ -20,13 +20,16 @@ public class SpawnManager : MonoBehaviour
     private float lastTimeEnemiesWereSpawned = 0;
     private bool _spawningEnabled = false;
 
+    public void LoadSpawnManager() {
+        InstantiateEntities();
+        ReloadSpawnRate();
+    }
+
     public void StartSpawnManager() {
         if (ThereAreEnemiesToSpawn()) {
             _spawningEnabled = true;
-            InstantiateEntities();
             SpawnEnemies();
         }
-        ReloadSpawnRate();
     }
 
     private void InstantiateEntities() {

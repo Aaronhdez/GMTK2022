@@ -19,7 +19,6 @@ public class PlayerController : CharacterController
     void Start()
     {
         CharacterLife = 6;
-        CharacterMovementSpeed = 10f;
     }
 
     // Update is called once per frame
@@ -122,5 +121,10 @@ public class PlayerController : CharacterController
         invincible = true;
         yield return new WaitForSeconds(invincibleTime);
         invincible = false;
+    }
+
+    public override float GetAttackDistance()
+    {
+        return 1;
     }
 }
