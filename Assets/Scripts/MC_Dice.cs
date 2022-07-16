@@ -51,12 +51,10 @@ public class MC_Dice : MonoBehaviour
     void Start()
     {
 
-        addWeapon(0); //Empezamos con la espada
+        //Empezamos con la espada
         addWeapon(1);
-        addWeapon(2);
-        addWeapon(3);
-        addWeapon(4);
-        ActiveWeapon(0); //La activamos
+
+        ActiveWeapon(1); //La activamos
     }
 
  

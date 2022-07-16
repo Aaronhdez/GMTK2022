@@ -26,11 +26,52 @@ public class Axe : Weapon
                 }
             }
             else
-            // TODO: Check active tag on dice
-            if (enemy.CompareTag("orc"))
             {
-                enemy.GetComponent<CharacterController>().TakeDamage(damage);
+                switch (MC_Enemies.instance.CurrentEnemy)
+                {
+                    case 0:
+                        if (enemy.CompareTag("orc"))
+                        {
+                            enemy.GetComponent<CharacterController>().TakeDamage(damage);
+                        }
+                        break;
+                    case 1:
+                        if (enemy.CompareTag("skeleton"))
+                        {
+                            enemy.GetComponent<CharacterController>().TakeDamage(damage);
+                        }
+                        break;
+                    case 2:
+                        if (enemy.CompareTag("beast"))
+                        {
+                            enemy.GetComponent<CharacterController>().TakeDamage(damage);
+                        }
+                        break;
+                    case 3:
+                        if (enemy.CompareTag("witch"))
+                        {
+                            enemy.GetComponent<CharacterController>().TakeDamage(damage);
+                        }
+                        break;
+                    case 4:
+                        if (enemy.CompareTag("ogger"))
+                        {
+                            enemy.GetComponent<CharacterController>().TakeDamage(damage);
+                        }
+                        break;
+                    case 5:
+                        if (enemy)
+                        {
+                            enemy.GetComponent<CharacterController>().TakeDamage(damage);
+                        }
+                        break;
+                    default:
+                        break;
+
+                }
             }
+            // TODO: Check active tag on dice
+            
         }
     }
 
@@ -39,3 +80,5 @@ public class Axe : Weapon
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
 }
+
+

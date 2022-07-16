@@ -93,78 +93,10 @@ public abstract class Projectile : MonoBehaviour
         }
         
     }
-       
+
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-
-        switch (MC_Enemies.instance.CurrentEnemy)
-        {
-            case 0:
-                if (collision.transform.CompareTag("orc"))
-                {
-                    Attack(collision.gameObject);
-                }
-                else
-                {
-                    Destroy(gameObject);
-                }
-                break;
-            case 1:
-                if (collision.transform.CompareTag("skeleton"))
-                {
-                    Attack(collision.gameObject);
-                }
-                else
-                {
-                    Destroy(gameObject);
-                }
-                break;
-            case 2:
-                if (collision.transform.CompareTag("beast"))
-                {
-                    Attack(collision.gameObject);
-                }
-                else
-                {
-                    Destroy(gameObject);
-                }
-                break;
-            case 3:
-                if (collision.transform.CompareTag("witch"))
-                {
-                    Attack(collision.gameObject);
-                }
-                else
-                {
-                    Destroy(gameObject);
-                }
-                break;
-            case 4:
-                if (collision.transform.CompareTag("ogger"))
-                {
-                    Attack(collision.gameObject);
-                }
-                else
-                {
-                    Destroy(gameObject);
-                }
-                break;
-            case 5:
-                if (collision.transform)
-                {
-                    Attack(collision.gameObject);
-                }
-                else
-                {
-                    Destroy(gameObject);
-                }
-                break;
-            default:
-                break;
-                }
-            }
-        }
         if (isEnemy)
         {
             if (collision.transform.CompareTag("Player"))
@@ -173,14 +105,74 @@ public abstract class Projectile : MonoBehaviour
             }
         }
         else
-        // TODO: Check active tag on dice
-        if (collision.transform.CompareTag("orc"))
         {
-            Attack(collision.gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
+            switch (MC_Enemies.instance.CurrentEnemy)
+            {
+                case 0:
+                    if (collision.transform.CompareTag("orc"))
+                    {
+                        Attack(collision.gameObject);
+                    }
+                    else
+                    {
+                        Destroy(gameObject);
+                    }
+                    break;
+                case 1:
+                    if (collision.transform.CompareTag("skeleton"))
+                    {
+                        Attack(collision.gameObject);
+                    }
+                    else
+                    {
+                        Destroy(gameObject);
+                    }
+                    break;
+                case 2:
+                    if (collision.transform.CompareTag("beast"))
+                    {
+                        Attack(collision.gameObject);
+                    }
+                    else
+                    {
+                        Destroy(gameObject);
+                    }
+                    break;
+                case 3:
+                    if (collision.transform.CompareTag("witch"))
+                    {
+                        Attack(collision.gameObject);
+                    }
+                    else
+                    {
+                        Destroy(gameObject);
+                    }
+                    break;
+                case 4:
+                    if (collision.transform.CompareTag("ogger"))
+                    {
+                        Attack(collision.gameObject);
+                    }
+                    else
+                    {
+                        Destroy(gameObject);
+                    }
+                    break;
+                case 5:
+                    if (collision.transform)
+                    {
+                        Attack(collision.gameObject);
+                    }
+                    else
+                    {
+                        Destroy(gameObject);
+                    }
+                    break;
+                default:
+                    break;
+            }
         }
     }
+       
+       
 }
