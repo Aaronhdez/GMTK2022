@@ -29,7 +29,7 @@ public class Dagger : Weapon
                 }
                 else
                 {
-                    if (enemy.CompareTag(MC_Enemies.instance.CurrentEnemy) || MC_Enemies.instance.CanAttackAll())
+                    if (enemy.CompareTag(EnemiesDiceController.instance.currentEnemy) || EnemiesDiceController.instance.AttackAll)
                     {
                         enemy.GetComponent<CharacterController>().TakeDamage(damage);
                     }
