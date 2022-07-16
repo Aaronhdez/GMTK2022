@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class Sword : Weapon
 {
-    
+
     [SerializeField] public AudioSource hitWithSword;
-    public AudioClip Clip;
     public Transform attackPoint;
     public float attackRange = 0.5f;
 
@@ -25,12 +24,12 @@ public class Sword : Weapon
             {
                 if (enemy.CompareTag("Player"))
                 {
+                    hitWithSword.Play();
                     enemy.GetComponent<CharacterController>().TakeDamage(damage);
                 }
             } else
             if (enemy.CompareTag(EnemiesDiceController.instance._currentEnemy) || EnemiesDiceController.instance.AttackAll)
             {
-                hitWithSword.PlayOneShot(Clip);
                 enemy.GetComponent<CharacterController>().TakeDamage(damage);
             }
         }
