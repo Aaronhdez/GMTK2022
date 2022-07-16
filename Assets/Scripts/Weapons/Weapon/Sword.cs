@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Sword : Weapon
-{
+{    
+    [SerializeField] private AudioSource hitWithSword;
 
-    [SerializeField] public AudioSource hitWithSword;
     public Transform attackPoint;
     public float attackRange = 0.5f;
 
@@ -26,6 +26,7 @@ public class Sword : Weapon
                 {
                     hitWithSword.Play();
                     enemy.GetComponent<CharacterController>().TakeDamage(damage);
+                    hitWithSword.Play();
                 }
             } else
             if (enemy.CompareTag(EnemiesDiceController.instance._currentEnemy) || EnemiesDiceController.instance.AttackAll)

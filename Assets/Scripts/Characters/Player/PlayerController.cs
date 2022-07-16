@@ -18,16 +18,19 @@ public class PlayerController : CharacterController
     [SerializeField]
     private Weapon weapon;
 
+
     // Start is called before the first frame update
     void Start()
     {
         characterLife = 6;
         dead = false;
         _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        rb = GetComponent<Rigidbody2D>();
+        _speed = new Vector2(0, 0);
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
         if (!dead && !_gameManager.playerMovementLocked)
         {
@@ -35,12 +38,25 @@ public class PlayerController : CharacterController
             Attack();
         }
     }
-    
+
     //Recibir daño temporal
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("Taking damage");
-        TakeDamage(1);
+        if (collision.gameObject.layer.Equals("Enemy"))
+        {
+            Debug.Log("Taking damage");
+            TakeDamage(1);
+        }
+
+        if (collision.gameObject.CompareTag("Arena"))
+        {
+            Debug.Log("te saliste puto");
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+
     }
 
     public override void Attack()
@@ -65,45 +81,21 @@ public class PlayerController : CharacterController
     {
         if (!_gameManager.playerMovementLocked)
         {
-            //Rotacion 
-
-            //Get the Screen positions of the object
+            //Rotation
             Vector2 positionOnScreen = Camera.main.WorldToViewportPoint(transform.position);
-
-            //Get the Screen position of the mouse
             Vector2 mouseOnScreen = (Vector2)Camera.main.ScreenToViewportPoint(Input.mousePosition);
-
-            //Get the angle between the points
             float angle = Mathf.Atan2(positionOnScreen.y - mouseOnScreen.y, positionOnScreen.x - mouseOnScreen.x) * Mathf.Rad2Deg;
-
             transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, angle + 90.0f));
 
-
             //Direcciones
+            _speed.x = Input.GetAxisRaw("Horizontal");
+            _speed.y = Input.GetAxisRaw("Vertical");
+            _speed.Normalize();
+            _speed *= characterMovementSpeed * Time.deltaTime;
 
-            Vector2 dir = Vector2.zero;
+            rb.velocity = _speed;
 
-            if (Input.GetKey(KeyCode.D)) //Si el jugador tiene el boton "D" pulsado 
-            {
-                dir += Vector2.right; //Se mueve a la derecha
-            }
-
-            if (Input.GetKey(KeyCode.A)) //Si el jugador tiene el boton "A" pulsado 
-            {
-                dir += Vector2.left; //Se mueve hacia la izquierda
-            }
-
-            if (Input.GetKey(KeyCode.W)) //Si el jugador tiene el boton "W" pulsado 
-            {
-                dir += Vector2.up; //Se mueve hacia arriba
-            }
-
-            if (Input.GetKey(KeyCode.S)) //Si el jugador tiene el boton "S" pulsado 
-            {
-                dir += Vector2.down; //Se mueve hacia abajo
-            }
-
-            transform.Translate(dir.normalized * characterMovementSpeed * Time.deltaTime, Space.World);
+            rb.MovePosition(rb.position + _speed);
         }
     }
 
@@ -138,7 +130,7 @@ public class PlayerController : CharacterController
         return 1;
     }
 
-    public void SetWeapon(Weapon newWeapon) 
+    public void SetWeapon(Weapon newWeapon)
     {
         weapon = newWeapon;
     }
