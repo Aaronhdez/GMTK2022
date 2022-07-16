@@ -27,7 +27,7 @@ public class Axe : Weapon
             }
             else
             {
-                if (enemy.CompareTag(EnemiesDiceController.instance.currentEnemy) || EnemiesDiceController.instance.AttackAll)
+                if (enemy.CompareTag(EnemiesDiceController.instance._currentEnemy) || EnemiesDiceController.instance.AttackAll)
                 {
                     enemy.GetComponent<CharacterController>().TakeDamage(damage);
                 }

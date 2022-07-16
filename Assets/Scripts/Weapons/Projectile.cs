@@ -33,7 +33,7 @@ public abstract class Projectile : MonoBehaviour
         }
         else
         {
-            if (collision.transform.CompareTag(EnemiesDiceController.instance.currentEnemy) || EnemiesDiceController.instance.AttackAll)
+            if (collision.transform.CompareTag(EnemiesDiceController.instance._currentEnemy) || EnemiesDiceController.instance.AttackAll)
             {
                 Attack(collision.gameObject);
             }
@@ -58,7 +58,7 @@ public abstract class Projectile : MonoBehaviour
         }
         else
         {
-            if (collision.transform.CompareTag(EnemiesDiceController.instance.currentEnemy) || EnemiesDiceController.instance.AttackAll)
+            if (collision.transform.CompareTag(EnemiesDiceController.instance._currentEnemy) || EnemiesDiceController.instance.AttackAll)
             {
                 Attack(collision.gameObject);
             }

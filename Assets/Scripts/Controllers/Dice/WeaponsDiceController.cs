@@ -7,13 +7,15 @@ public class WeaponsDiceController : DiceController {
     [Header("Entities")]
     [SerializeField] private List<Weapon> _weaponsAvailable;
     [SerializeField] private PlayerController _playerController;
+    [SerializeField] public DiceUIController _diceUIController;
 
     [Header("Parameters")]
     [SerializeField] private int _weaponIndex = 0;
-    
+
     void Start() {
         DisableAllWeapons();
         RollTheDice();
+        _diceUIController.SetUp(0);
         _playerController.SetWeapon(_weaponsAvailable[_weaponIndex]);
     }
 
@@ -38,7 +40,7 @@ public class WeaponsDiceController : DiceController {
         DisableAllWeapons();
         _weaponIndex = GetRandomWeaponIndex();
         _weaponsAvailable[_weaponIndex].gameObject.SetActive(true);
-        //Actualizar Dado en la UI
+        _diceUIController.RollingAnimation(_weaponIndex);
     }
 
     //AUXILIARY METHODS
