@@ -22,9 +22,9 @@ public class WeaponsDiceController : DiceController {
     void Update() {
         _rollTime -= Time.deltaTime;
         if (_rollTime <= 0.0f) {
+            _rollTime = 10.0f;
             RollTheDice();
             //Reproducir Sonido
-            _rollTime = 10.0f;
         }
     }
 
@@ -39,6 +39,7 @@ public class WeaponsDiceController : DiceController {
     public override void RollTheDice() {
         DisableAllWeapons();
         _weaponIndex = GetRandomWeaponIndex();
+        _playerController.SetWeapon(_weaponsAvailable[_weaponIndex]);
         _weaponsAvailable[_weaponIndex].gameObject.SetActive(true);
         _diceUIController.RollingAnimation(_weaponIndex);
     }
