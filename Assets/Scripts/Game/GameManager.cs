@@ -3,18 +3,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
-{
+public class GameManager : MonoBehaviour {
+    CharacterController _player;
     SpawnManager _spawnManager;
-    public TimerController _timerController;
-    UIController _uIController;
+    TimerController _timerController;
+    UIController _uiController;
+    SoundController _soundController;
+
     [SerializeField] private bool _gameStarted = false;
     [SerializeField] private bool _gamePaused = false;
 
     public bool playerMovementLocked = true;
-
     private int score;
-
     public event Action<int> EnemyDiedEvent;
 
 
@@ -23,20 +23,20 @@ public class GameManager : MonoBehaviour
         SetUpGame();
     }
 
-    public bool GameHasStarted()
-    {
+    public bool GameHasStarted() {
         return _gameStarted;
     }
 
-    public bool GameIsPaused()
-    {
+    public bool GameIsPaused() {
         return _gamePaused;
     }
 
     private void LoadEntities() {
+        _player = GameObject.FindWithTag("Player").GetComponent<CharacterController>();
         _spawnManager = GetComponent<SpawnManager>();
         _timerController = GetComponent<TimerController>();
-        _uIController = GetComponent<UIController>();
+        _uiController = GetComponent<UIController>();
+        _soundController = GetComponent<SoundController>();
     }
 
     private void SetUpGame() {
@@ -46,6 +46,10 @@ public class GameManager : MonoBehaviour
 
 
     void Update() {
+        if (_player.CharacterLife == 0) {
+            GameOver();
+        }
+
         if (!_gameStarted && Input.GetKeyDown(KeyCode.Return)) {
             _gameStarted = true;
             playerMovementLocked = false;
@@ -68,7 +72,7 @@ public class GameManager : MonoBehaviour
         playerMovementLocked = false;
         Time.timeScale = 1f;
         _timerController.Resume();
-        _uIController.Activate("GameScreen");
+        _uiController.Activate("GameScreen");
     }
 
     private void PauseGame() {
@@ -76,11 +80,18 @@ public class GameManager : MonoBehaviour
         playerMovementLocked = true;
         Time.timeScale = 0f;
         _timerController.Pause();
-        _uIController.Activate("PauseScreen");
+        _uiController.Activate("PauseScreen");
     }
 
-    public void AddScore(int score)
-    {
+    private void GameOver() {
+        _gamePaused = true;
+        playerMovementLocked = true;
+        Time.timeScale = 0f;
+        _timerController.Pause();
+        _uiController.Activate("GameOverScreen");
+    }
+
+    public void AddScore(int score) {
         this.score += score;
         EnemyDiedEvent?.Invoke(this.score);
     }
