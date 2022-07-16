@@ -201,10 +201,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23a8534569f060441a80e647057567eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _timerController: {fileID: 0}
   _gameStarted: 0
   _gamePaused: 0
   playerMovementLocked: 1
+  _gameOverInfo: {fileID: 990495498}
 --- !u!4 &193547058
 Transform:
   m_ObjectHideFlags: 0
@@ -286,7 +286,14 @@ MonoBehaviour:
   _pauseScreenElements:
   - {fileID: 1865125738}
   - {fileID: 1701334592}
-  _gameOverScreenElements: []
+  - {fileID: 884044255}
+  - {fileID: 1991958360}
+  - {fileID: 587893947}
+  - {fileID: 584747400}
+  _gameOverScreenElements:
+  - {fileID: 1018516275}
+  - {fileID: 948227701}
+  - {fileID: 990495496}
   _currentScreen: GameScreen
 --- !u!1 &519420028
 GameObject:
@@ -431,6 +438,11 @@ GameObject:
 --- !u!1 &884044255 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5519804000592489375, guid: 9d1641a46616c5d46a3e6ad89aabef18, type: 3}
+  m_PrefabInstance: {fileID: 5519804001340168768}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &948227701 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 948227701, guid: 9d1641a46616c5d46a3e6ad89aabef18, type: 3}
   m_PrefabInstance: {fileID: 5519804001340168768}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &953453105
@@ -585,6 +597,27 @@ MonoBehaviour:
   invincible: 0
   invincibleTime: 0
   weapon: {fileID: 1051393271}
+--- !u!1 &990495496 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 990495496, guid: 9d1641a46616c5d46a3e6ad89aabef18, type: 3}
+  m_PrefabInstance: {fileID: 5519804001340168768}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &990495498 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 990495498, guid: 9d1641a46616c5d46a3e6ad89aabef18, type: 3}
+  m_PrefabInstance: {fileID: 5519804001340168768}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 990495496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1018516275 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1018516275, guid: 9d1641a46616c5d46a3e6ad89aabef18, type: 3}
+  m_PrefabInstance: {fileID: 5519804001340168768}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1049502672
 GameObject:
   m_ObjectHideFlags: 0
@@ -944,20 +977,6 @@ PrefabInstance:
       propertyPath: _gameManager
       value: 
       objectReference: {fileID: 193547057}
-    - target: {fileID: 2006122621130444795, guid: 9d1641a46616c5d46a3e6ad89aabef18, type: 3}
-      propertyPath: m_text
-      value: 'Game paused
-
-        Press ESC to resume'
-      objectReference: {fileID: 0}
-    - target: {fileID: 2006122621130444795, guid: 9d1641a46616c5d46a3e6ad89aabef18, type: 3}
-      propertyPath: m_fontSize
-      value: 41.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 5393391860770294237, guid: 9d1641a46616c5d46a3e6ad89aabef18, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5519804000592489377, guid: 9d1641a46616c5d46a3e6ad89aabef18, type: 3}
       propertyPath: player
       value: 

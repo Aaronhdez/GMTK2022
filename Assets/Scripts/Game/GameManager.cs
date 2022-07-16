@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -19,6 +20,9 @@ public class GameManager : MonoBehaviour
     private int score;
 
     public event Action<int> EnemyDiedEvent;
+
+    [SerializeField]
+    private TextMeshProUGUI _gameOverInfo;
 
 
     void Start() {
@@ -94,6 +98,7 @@ public class GameManager : MonoBehaviour
         playerMovementLocked = true;
         Time.timeScale = 0f;
         _timerController.Pause();
+        _gameOverInfo.text = "You have survived " + _timerController.GetCurrentTime() + " and scored " + score + " points.";
         _uIController.Activate("GameOverScreen");
     }
 
