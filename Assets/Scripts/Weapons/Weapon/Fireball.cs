@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Fireball : Projectile
 {
-    public override void Attack()
+    public override void Attack(GameObject enemy)
     {
-        // TODO: damage enemy
+        enemy.GetComponent<CharacterController>().TakeDamage(damage);
 
         Destroy(gameObject);
     }

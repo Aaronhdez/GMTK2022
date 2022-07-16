@@ -38,8 +38,7 @@ public class PlayerController : CharacterController
         TakeDamage(1);
     }
 
-    float movementSpeed = 5f; //Placeholder
-    float deltaTimeVar = 60f; //placeHolder
+    float movementSpeed = 5f;
 
 
     public override void Attack()
@@ -96,9 +95,6 @@ public class PlayerController : CharacterController
         {
             transform.Translate(Vector2.down * movementSpeed * Time.deltaTime, Space.World); //Se mueve hacia abajo
         }
-
-        //Rotacion 
-
     }
 
     public override void TakeDamage(int damage)
