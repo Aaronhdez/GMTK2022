@@ -29,13 +29,15 @@ public class EnemiesDiceController : DiceController {
     }
 
     void Update() {
-        _rollTime -= Time.deltaTime;
-        if (_rollTime <= 0.0f) {
-            RollTheDice();
-            //Reproducir Sonido
-            _rollTime = 5f;
+        if (IsActive) {
+            _rollTime -= Time.deltaTime;
+            if (_rollTime <= 0.0f) {
+                RollTheDice();
+                //Reproducir Sonido
+                _rollTime = 5f;
+            }
+            AttackAll = _currentEnemy.Equals("all");
         }
-        AttackAll = _currentEnemy.Equals("all");
     }
     private void LoadEnemiesList() {
         _enemiesAvailable = new List<string> {
@@ -50,12 +52,18 @@ public class EnemiesDiceController : DiceController {
 
     public override void RollTheDice() {
         int newIndex = UnityEngine.Random.Range(0, 12) % 6;
-        var newEnemy = _enemiesAvailable[newIndex];
-        while (newEnemy.Equals(_currentEnemy)) {
-            _currentEnemy = _enemiesAvailable[UnityEngine.Random.Range(0, 12) % 6];
+        while (_enemiesAvailable[newIndex].Equals(_currentEnemy)) {
+            newIndex = UnityEngine.Random.Range(0, 12) % 6;
         }
-        _currentEnemy = newEnemy;
         _diceUIController.RollingAnimation(newIndex);
+        _currentEnemy = _enemiesAvailable[newIndex];
     }
 
+    public override void EnableDice() {
+        IsActive = true;
+    }
+
+    public override void DisableDice() {
+        IsActive = false;
+    }
 }

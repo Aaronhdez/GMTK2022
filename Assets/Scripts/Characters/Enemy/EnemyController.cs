@@ -43,9 +43,17 @@ public class EnemyController : CharacterController {
 
     public override void Move()
     {
+        if (!weapon.CanAttack())
+        {
+            return;
+        }
+
         GameObject player = GameObject.FindGameObjectWithTag("Player");
 
-        transform.Translate((player.transform.position - transform.position).normalized * characterMovementSpeed * Time.deltaTime);
+        float angle = Mathf.Atan2(player.transform.position.y - transform.position.y, player.transform.position.x - transform.position.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, angle - 90f));
+
+        transform.Translate((player.transform.position - transform.position).normalized * characterMovementSpeed * Time.deltaTime, Space.World);
     }
 
     public override void TakeDamage(int damage)
