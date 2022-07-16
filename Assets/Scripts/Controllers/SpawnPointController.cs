@@ -20,4 +20,9 @@ public class SpawnPointController : MonoBehaviour
             _isActive = true;
         }
     }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(transform.position, _detectionRange);
+    }
 }
