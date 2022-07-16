@@ -29,13 +29,15 @@ public class EnemiesDiceController : DiceController {
     }
 
     void Update() {
-        _rollTime -= Time.deltaTime;
-        if (_rollTime <= 0.0f) {
-            RollTheDice();
-            //Reproducir Sonido
-            _rollTime = 5f;
+        if (IsActive) {
+            _rollTime -= Time.deltaTime;
+            if (_rollTime <= 0.0f) {
+                RollTheDice();
+                //Reproducir Sonido
+                _rollTime = 5f;
+            }
+            AttackAll = _currentEnemy.Equals("all");
         }
-        AttackAll = _currentEnemy.Equals("all");
     }
     private void LoadEnemiesList() {
         _enemiesAvailable = new List<string> {
@@ -57,4 +59,11 @@ public class EnemiesDiceController : DiceController {
         _currentEnemy = _enemiesAvailable[newIndex];
     }
 
+    public override void EnableDice() {
+        IsActive = true;
+    }
+
+    public override void DisableDice() {
+        IsActive = false;
+    }
 }
