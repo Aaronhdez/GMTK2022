@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
     CharacterController _player;
@@ -18,6 +20,9 @@ public class GameManager : MonoBehaviour {
     private int score;
 
     public event Action<int> EnemyDiedEvent;
+
+    [SerializeField]
+    private TextMeshProUGUI _gameOverInfo;
 
 
     void Start() {
@@ -93,7 +98,14 @@ public class GameManager : MonoBehaviour {
         Time.timeScale = 0f;
         _timerController.Pause();
         _soundController.PlayGameOverMusic();
+        _gameOverInfo.text = "You have survived " + _timerController.GetCurrentTime() + " and scored " + score + " points.";
         _uiController.Activate("GameOverScreen");
+    }
+
+    public void RestartGame()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("MainScene");
     }
 
     public void AddScore(int score) {

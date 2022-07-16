@@ -23,6 +23,17 @@ public class TimerController : MonoBehaviour {
         Resume();
     }
 
+    public void Restart()
+    {
+        _time = 0;
+        StartTimer();
+    }
+
+    public string GetCurrentTime()
+    {
+        return _currentTime;
+    }
+
     void Update() {
         if (Enabled) { 
             _time += Time.deltaTime;
