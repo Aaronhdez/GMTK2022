@@ -7,6 +7,7 @@ public class SpawnPointController : MonoBehaviour
 
     [Header("Parameters")]
     [SerializeField] private int _detectionRange;
+    [SerializeField] public bool _isActive = true;
 
     void Update() {
         var playerLayermask = 1 << 6;
@@ -14,9 +15,9 @@ public class SpawnPointController : MonoBehaviour
             new List<Collider>(Physics.OverlapSphere(
                 transform.position, _detectionRange, playerLayermask));
         if (playersAround.Count > 0) {
-            gameObject.SetActive(false);
+            _isActive = false;
         } else {
-            gameObject.SetActive(true);
+            _isActive = true;
         }
     }
 }
