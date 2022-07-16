@@ -1,9 +1,13 @@
+using System;
+using UnityEngine;
+
 public class EnemyController : CharacterController {
+    [SerializeField] private int _defaultCharacterLife;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        _defaultCharacterLife = CharacterLife;
     }
 
     // Update is called once per frame
@@ -31,4 +35,7 @@ public class EnemyController : CharacterController {
         CharacterLife -= damage;
     }
 
+    public void ResetToDefaults() {
+        CharacterLife = _defaultCharacterLife;
+    }
 }
