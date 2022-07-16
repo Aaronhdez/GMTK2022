@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class WitchController : EnemyController
 {
-    public override void Attack()
-    {
-
-    }
-
     public override void Move()
     {
+        if (!weapon.CanAttack())
+        {
+            return;
+        }
+
         GameObject player = GameObject.FindGameObjectWithTag("Player");
 
         transform.Translate((player.transform.position - transform.position).normalized * CharacterMovementSpeed * Time.deltaTime);
