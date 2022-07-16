@@ -9,6 +9,8 @@ public abstract class Weapon : MonoBehaviour
     public float attackRate = 1f;
     protected float nextAttactTime = 0f;
 
+    public bool isEnemy = false;
+
     public abstract void Attack();
 
     protected bool Cooldown()
@@ -16,6 +18,15 @@ public abstract class Weapon : MonoBehaviour
         if (Time.time >= nextAttactTime)
         {
             nextAttactTime = Time.time + 1f / attackRate;
+            return true;
+        }
+        return false;
+    }
+
+    public bool CanAttack()
+    {
+        if (Time.time >= nextAttactTime)
+        {
             return true;
         }
         return false;
