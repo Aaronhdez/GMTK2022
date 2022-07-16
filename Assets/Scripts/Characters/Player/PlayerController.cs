@@ -6,8 +6,6 @@ using UnityEngine;
 public class PlayerController : CharacterController
 {
 
-    float movementSpeed = 5f;
-
     public event Action<int> playerDamagedEvent;
 
     [SerializeField]
@@ -21,7 +19,7 @@ public class PlayerController : CharacterController
     void Start()
     {
         CharacterLife = 6;
-        CharacterMovementSpeed = 20f;
+        CharacterMovementSpeed = 10f;
     }
 
     // Update is called once per frame
@@ -97,7 +95,7 @@ public class PlayerController : CharacterController
             dir += Vector2.down; //Se mueve hacia abajo
         }
 
-        transform.Translate(dir.normalized * movementSpeed * Time.deltaTime, Space.World);
+        transform.Translate(dir.normalized * CharacterMovementSpeed * Time.deltaTime, Space.World);
     }
 
     public override void TakeDamage(int damage)
