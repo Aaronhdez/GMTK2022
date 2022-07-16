@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
     CharacterController _player;
@@ -99,6 +100,17 @@ public class GameManager : MonoBehaviour {
         _soundController.PlayGameOverMusic();
         _gameOverInfo.text = "You have survived " + _timerController.GetCurrentTime() + " and scored " + score + " points.";
         _uiController.Activate("GameOverScreen");
+    }
+
+    public void RestartGame()
+    {
+        _gameOver = false;
+        _gamePaused = false;
+        _gameStarted = false;
+        playerMovementLocked = true;
+        _timerController.Restart();
+        _player.Revive();
+        SceneManager.LoadScene("MainScene");
     }
 
     public void AddScore(int score) {
