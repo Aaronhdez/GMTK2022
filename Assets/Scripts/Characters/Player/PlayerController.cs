@@ -19,7 +19,6 @@ public class PlayerController : CharacterController
     void Start()
     {
         CharacterLife = 6;
-        CharacterMovementSpeed = 10f;
     }
 
     // Update is called once per frame
