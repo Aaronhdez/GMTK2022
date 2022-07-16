@@ -139,4 +139,9 @@ public class PlayerController : CharacterController
     {
         return 1;
     }
+
+    public void SetWeapon(Weapon newWeapon) 
+    {
+        weapon = newWeapon;
+    }
 }
