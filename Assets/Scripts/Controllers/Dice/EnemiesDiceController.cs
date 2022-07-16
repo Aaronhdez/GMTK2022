@@ -7,9 +7,10 @@ public class EnemiesDiceController : DiceController {
     
     [Header("Entities")]
     [SerializeField] private List<string> _enemiesAvailable;
+    [SerializeField] public DiceUIController _diceUIController;
 
     [Header("Parameters")]
-    [SerializeField] public string currentEnemy;
+    [SerializeField] public string _currentEnemy;
     [SerializeField] private bool attackAll = false;
 
     public static EnemiesDiceController instance;
@@ -22,7 +23,8 @@ public class EnemiesDiceController : DiceController {
 
     void Start() {
         LoadEnemiesList();
-        currentEnemy = _enemiesAvailable[0];
+        _currentEnemy = _enemiesAvailable[0];
+        _diceUIController.SetUp(0);
         RollTheDice();
     }
 
@@ -33,7 +35,7 @@ public class EnemiesDiceController : DiceController {
             //Reproducir Sonido
             _rollTime = 5f;
         }
-        AttackAll = currentEnemy.Equals("all");
+        AttackAll = _currentEnemy.Equals("all");
     }
     private void LoadEnemiesList() {
         _enemiesAvailable = new List<string> {
@@ -49,12 +51,11 @@ public class EnemiesDiceController : DiceController {
     public override void RollTheDice() {
         int newIndex = UnityEngine.Random.Range(0, 12) % 6;
         var newEnemy = _enemiesAvailable[newIndex];
-        while (newEnemy.Equals(currentEnemy)) {
-            currentEnemy = _enemiesAvailable[UnityEngine.Random.Range(0, 12) % 6];
+        while (newEnemy.Equals(_currentEnemy)) {
+            _currentEnemy = _enemiesAvailable[UnityEngine.Random.Range(0, 12) % 6];
         }
-        currentEnemy = newEnemy;
-
-        //Actualizar el Dado en la UI;
+        _currentEnemy = newEnemy;
+        _diceUIController.RollingAnimation(newIndex);
     }
 
 }
