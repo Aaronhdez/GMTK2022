@@ -39,12 +39,11 @@ public class UIController : MonoBehaviour
     public void Activate(string currentScreen) {
         _currentScreen = currentScreen;
         foreach(KeyValuePair<string, List<GameObject>> entry in _screensAvailable){
-            if (entry.Key.Equals(currentScreen)) {
-                EnableScreen(entry.Value);
-                continue;
+            if (!entry.Key.Equals(currentScreen)) {
+                DisableScreen(entry.Value);
             }
-            DisableScreen(entry.Value);
         }
+        EnableScreen(_screensAvailable[_currentScreen]);
     }
 
     private void EnableScreen(List<GameObject> elements) {

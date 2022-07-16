@@ -56,7 +56,6 @@ public class PlayerController : CharacterController
     {
         Debug.Log("Player dead");
         dead = true;
-        _gameManager._timerController.Pause();
         //Diying animation and sound
 
         //GameOver screen
