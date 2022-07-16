@@ -20,14 +20,17 @@ public class SpawnManager : MonoBehaviour
     private float lastTimeEnemiesWereSpawned = 0;
     private bool _spawningEnabled = false;
 
-    public void StartSpawnManager(){
-        _spawningEnabled = true;
-        InstantiateEntities();
-        SpawnEnemies();
+    public void StartSpawnManager() {
+        if (ThereAreEnemiesToSpawn()) {
+            _spawningEnabled = true;
+            InstantiateEntities();
+            SpawnEnemies();
+        }
         ReloadSpawnRate();
     }
 
     private void InstantiateEntities() {
+        _enemiesLoaded = new List<GameObject>();
         for (int i = 0; i < _enemiesAvailable.Count; i++) {
             for (int j = 0; j < _enemiesAvailable.Count; j++) {
                 var newInstance = Instantiate(_enemiesAvailable[i], this.transform);
@@ -38,24 +41,23 @@ public class SpawnManager : MonoBehaviour
     }
 
     private void SpawnEnemies() {
-        var enemiesToSpawn = UnityEngine.Random.Range(
-            1, _amountOfEnemiesSpawnedAtOnce);
-        for (int i = 0; i < enemiesToSpawn; i++) {
-            //REVISAR IN-GAME
-            var nonActiveEnemyEntities = _enemiesLoaded.Where(e => !e.activeInHierarchy).ToList();
-            var index = UnityEngine.Random.Range(0, nonActiveEnemyEntities.Count);
-            Activate(nonActiveEnemyEntities[index]);
+        var nonActiveEnemies = _enemiesLoaded.Where(
+            e => !e.activeInHierarchy).ToList();
+        int enemiesToSpawn = GetAmountToSpawn(nonActiveEnemies);
+        if (nonActiveEnemies.Count > 0) {
+            for (int i = 0; i < enemiesToSpawn; i++) {
+                var index = UnityEngine.Random.Range(0, nonActiveEnemies.Count);
+                ActivateEnemy(nonActiveEnemies[index]);
+            }
         }
-
     }
 
-    private void Activate(GameObject gameObject) {
-        //REVISAR IN-GAME
-        //Por si queremos desactivar spawnpoins en funcion de donde este el player
-        var availableSpawnPoints = _spawnPoints.Where(s => !s.activeInHierarchy).ToList();
+    private void ActivateEnemy(GameObject gameObject) {
+        var availableSpawnPoints = _spawnPoints.Where(
+            s => s.GetComponent<SpawnPointController>().IsActive).ToList();
         var index = UnityEngine.Random.Range(0, _spawnPoints.Count);
         gameObject.transform.position = availableSpawnPoints[index].transform.position;
-        //Rotar respecto a centro (opcional)
+        gameObject.GetComponent<EnemyController>().ResetToDefaults();
         gameObject.SetActive(true);
     }
 
@@ -77,6 +79,18 @@ public class SpawnManager : MonoBehaviour
             lastTimeEnemiesWereSpawned = currentTime;
             ReloadSpawnRate();
         }
+    }
+
+    //AUXILIARY METHODS
+
+    private bool ThereAreEnemiesToSpawn() {
+        return _enemiesAvailable.Count != 0;
+    }
+
+    private int GetAmountToSpawn(List<GameObject> nonActiveEnemies) {
+        return (nonActiveEnemies.Count > _amountOfEnemiesSpawnedAtOnce) ?
+            _amountOfEnemiesSpawnedAtOnce :
+            UnityEngine.Random.Range(1, nonActiveEnemies.Count);
     }
 
 }

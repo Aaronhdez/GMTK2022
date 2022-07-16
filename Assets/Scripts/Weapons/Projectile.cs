@@ -27,6 +27,10 @@ public abstract class Projectile : MonoBehaviour
         {
             Attack(collision.gameObject);
         }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -35,6 +39,10 @@ public abstract class Projectile : MonoBehaviour
         if (collision.transform.CompareTag("orc"))
         {
             Attack(collision.gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
         }
     }
 }
