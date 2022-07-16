@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 492463137104521136}
   - component: {fileID: 4104396189402241592}
   - component: {fileID: 4104396189402241599}
-  - component: {fileID: 1406308559360527276}
+  - component: {fileID: 6684934889277669083}
   m_Layer: 7
   m_Name: OgreEnemy
   m_TagString: ogre
@@ -29,9 +29,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4172234053957555910}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.44, y: 2.65, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5346768464075339262}
   m_Father: {fileID: 0}
@@ -78,8 +78,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.118725546, g: 0.45121735, b: 0.8679245, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 93fa2bd43e631e748a1988ae33533b62, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -118,6 +118,8 @@ MonoBehaviour:
   characterLife: 1
   characterMovementSpeed: 3
   dead: 0
+  rb: {fileID: 0}
+  _speed: {x: 0, y: 0}
   _defaultCharacterLife: 1
   enemyScore: 10
   weapon: {fileID: 5346768464075339263}
@@ -134,17 +136,17 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 50
   m_LinearDrag: 0
-  m_AngularDrag: 0
+  m_AngularDrag: 0.1
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &1406308559360527276
-CircleCollider2D:
+--- !u!70 &6684934889277669083
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -156,9 +158,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.5
+  m_Offset: {x: -1.2, y: -0.5}
+  m_Size: {x: 6, y: 3.5}
+  m_Direction: 1
 --- !u!1001 &5838280120227040634
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -217,6 +219,14 @@ PrefabInstance:
     - target: {fileID: 1960813240185469061, guid: e872f74924bf2d6469876b11455ee59a, type: 3}
       propertyPath: isEnemy
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1960813240185469061, guid: e872f74924bf2d6469876b11455ee59a, type: 3}
+      propertyPath: attackRange
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1960813240981348578, guid: e872f74924bf2d6469876b11455ee59a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e872f74924bf2d6469876b11455ee59a, type: 3}
