@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Axe : Weapon
 {
+    [SerializeField] public AudioSource hitWithAxe;
     public Transform attackPoint;
     public float attackRange = 0.5f;
 
@@ -13,15 +14,17 @@ public class Axe : Weapon
         {
             return;
         }
-
+        
         Collider2D[] hitEnemies = (isEnemy) ? Physics2D.OverlapCircleAll(attackPoint.position, attackRange, LayerMask.GetMask("Player")) : Physics2D.OverlapCircleAll(attackPoint.position, attackRange, LayerMask.GetMask("Enemy"));
 
         foreach (Collider2D enemy in hitEnemies)
         {
+            
             if (isEnemy)
             {
                 if (enemy.CompareTag("Player"))
                 {
+                    hitWithAxe.Play();
                     enemy.GetComponent<CharacterController>().TakeDamage(damage);
                 }
             }
