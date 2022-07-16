@@ -20,6 +20,15 @@ public abstract class Projectile : MonoBehaviour
 
     public abstract void Attack(GameObject enemy);
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        // TODO: Check active tag on dice
+        if (collision.transform.CompareTag("orc"))
+        {
+            Attack(collision.gameObject);
+        }
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         // TODO: Check active tag on dice
