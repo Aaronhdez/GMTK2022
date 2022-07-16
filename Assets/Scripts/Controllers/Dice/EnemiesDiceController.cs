@@ -50,12 +50,11 @@ public class EnemiesDiceController : DiceController {
 
     public override void RollTheDice() {
         int newIndex = UnityEngine.Random.Range(0, 12) % 6;
-        var newEnemy = _enemiesAvailable[newIndex];
-        while (newEnemy.Equals(_currentEnemy)) {
-            _currentEnemy = _enemiesAvailable[UnityEngine.Random.Range(0, 12) % 6];
+        while (_enemiesAvailable[newIndex].Equals(_currentEnemy)) {
+            newIndex = UnityEngine.Random.Range(0, 12) % 6;
         }
-        _currentEnemy = newEnemy;
         _diceUIController.RollingAnimation(newIndex);
+        _currentEnemy = _enemiesAvailable[newIndex];
     }
 
 }

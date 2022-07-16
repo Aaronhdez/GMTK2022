@@ -39,9 +39,9 @@ public class WeaponsDiceController : DiceController {
     public override void RollTheDice() {
         DisableAllWeapons();
         _weaponIndex = GetRandomWeaponIndex();
+        _diceUIController.RollingAnimation(_weaponIndex);
         _playerController.SetWeapon(_weaponsAvailable[_weaponIndex]);
         _weaponsAvailable[_weaponIndex].gameObject.SetActive(true);
-        _diceUIController.RollingAnimation(_weaponIndex);
     }
 
     //AUXILIARY METHODS
