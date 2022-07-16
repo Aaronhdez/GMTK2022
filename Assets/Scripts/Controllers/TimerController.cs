@@ -14,10 +14,13 @@ public class TimerController : MonoBehaviour {
 
     public bool Enabled { get => _enabled; set => _enabled = value; }
 
+    public void Start() {
+        _timerTextField.SetText("00:00");
+    }
+
     public void StartTimer()
     {
         Resume();
-        //_timerTextField.SetText("00:00");
     }
 
     void Update() {
@@ -25,6 +28,7 @@ public class TimerController : MonoBehaviour {
             _time += Time.deltaTime;
             TimeSpan timeSpan = TimeSpan.FromSeconds(_time);
             _currentTime = string.Format("{0:D2}:{1:D2}", timeSpan.Minutes, timeSpan.Seconds);
+            _timerTextField.SetText(_currentTime);
         }
     }
 
