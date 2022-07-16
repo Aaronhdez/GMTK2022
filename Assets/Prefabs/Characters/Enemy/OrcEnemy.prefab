@@ -115,10 +115,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27ccc5c2d70aa8c47a840eee549bf70e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CharacterLife: 1
-  CharacterMovementSpeed: 4
+  characterLife: 1
+  characterMovementSpeed: 4
+  dead: 0
   _defaultCharacterLife: 1
-  enemyScore: 0
+  enemyScore: 10
   weapon: {fileID: 6583925305234585174}
   attackRange: 1.5
 --- !u!58 &2657439037394081763

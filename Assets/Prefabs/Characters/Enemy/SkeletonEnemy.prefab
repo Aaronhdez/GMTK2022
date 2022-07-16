@@ -115,8 +115,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6832941142012c54a9e4b5b73613da65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CharacterLife: 1
-  CharacterMovementSpeed: 3
+  characterLife: 1
+  characterMovementSpeed: 3
+  dead: 0
   _defaultCharacterLife: 1
   enemyScore: 10
   weapon: {fileID: 940730236714850021}
