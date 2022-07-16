@@ -6,13 +6,30 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     SpawnManager _spawnManager;
-    TimerController _timerController;
+    public TimerController _timerController;
     [SerializeField] private bool _gameStarted = false;
     [SerializeField] private bool _gamePaused = false;
+
+    public bool playerMovementLocked = true;
+
+    private int score;
+
+    public event Action<int> EnemyDiedEvent;
+
 
     void Start() {
         LoadEntities();
         SetUpGame();
+    }
+
+    public bool GameHasStarted()
+    {
+        return _gameStarted;
+    }
+
+    public bool GameIsPaused()
+    {
+        return _gamePaused;
     }
 
     private void LoadEntities() {
@@ -21,6 +38,7 @@ public class GameManager : MonoBehaviour
     }
 
     private void SetUpGame() {
+        score = 0;
         _spawnManager.LoadSpawnManager();
     }
 
@@ -28,6 +46,7 @@ public class GameManager : MonoBehaviour
     void Update() {
         if (!_gameStarted && Input.GetKeyDown(KeyCode.Return)) {
             _gameStarted = true;
+            playerMovementLocked = false;
             _timerController.StartTimer();
             _spawnManager.StartSpawnManager();
         }
@@ -44,13 +63,21 @@ public class GameManager : MonoBehaviour
 
     private void ResumeGame() {
         _gamePaused = false;
+        playerMovementLocked = false;
         Time.timeScale = 1f;
         _timerController.Resume();
     }
 
     private void PauseGame() {
         _gamePaused = true;
+        playerMovementLocked = true;
         Time.timeScale = 0f;
         _timerController.Pause();
+    }
+
+    public void AddScore(int score)
+    {
+        this.score += score;
+        EnemyDiedEvent?.Invoke(this.score);
     }
 }

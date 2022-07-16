@@ -15,18 +15,25 @@ public class PlayerController : CharacterController
 
     private bool dead = false;
 
+    private GameManager _gameManager;
+
+    [SerializeField]
+    private Weapon weapon;
+
     // Start is called before the first frame update
     void Start()
     {
         CharacterLife = 6;
+        _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!dead)
+        if (!dead && !_gameManager.playerMovementLocked)
         {
             Move();
+            Attack();
         }
     }
     
@@ -39,14 +46,17 @@ public class PlayerController : CharacterController
 
     public override void Attack()
     {
-        throw new System.NotImplementedException();
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            weapon.Attack();
+        }
     }
 
     public override void Die()
     {
         Debug.Log("Player dead");
         dead = true;
-
+        _gameManager._timerController.Pause();
         //Diying animation and sound
 
         //GameOver screen
@@ -55,46 +65,48 @@ public class PlayerController : CharacterController
 
     public override void Move()
     {
-
-        //Rotacion 
-
-        //Get the Screen positions of the object
-        Vector2 positionOnScreen = Camera.main.WorldToViewportPoint(transform.position);
-
-        //Get the Screen position of the mouse
-        Vector2 mouseOnScreen = (Vector2)Camera.main.ScreenToViewportPoint(Input.mousePosition);
-
-        //Get the angle between the points
-        float angle = Mathf.Atan2(positionOnScreen.y - mouseOnScreen.y, positionOnScreen.x - mouseOnScreen.x) * Mathf.Rad2Deg;
-
-        transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, angle + 90.0f));
-
-
-        //Direcciones
-
-        Vector2 dir = Vector2.zero;
-
-        if (Input.GetKey(KeyCode.D)) //Si el jugador tiene el boton "D" pulsado 
+        if (!_gameManager.playerMovementLocked)
         {
-            dir += Vector2.right; //Se mueve a la derecha
-        }
+            //Rotacion 
 
-        if (Input.GetKey(KeyCode.A)) //Si el jugador tiene el boton "A" pulsado 
-        {
-            dir += Vector2.left; //Se mueve hacia la izquierda
-        }
+            //Get the Screen positions of the object
+            Vector2 positionOnScreen = Camera.main.WorldToViewportPoint(transform.position);
 
-        if (Input.GetKey(KeyCode.W)) //Si el jugador tiene el boton "W" pulsado 
-        {
-            dir += Vector2.up; //Se mueve hacia arriba
-        }
+            //Get the Screen position of the mouse
+            Vector2 mouseOnScreen = (Vector2)Camera.main.ScreenToViewportPoint(Input.mousePosition);
 
-        if (Input.GetKey(KeyCode.S)) //Si el jugador tiene el boton "S" pulsado 
-        {
-            dir += Vector2.down; //Se mueve hacia abajo
-        }
+            //Get the angle between the points
+            float angle = Mathf.Atan2(positionOnScreen.y - mouseOnScreen.y, positionOnScreen.x - mouseOnScreen.x) * Mathf.Rad2Deg;
 
-        transform.Translate(dir.normalized * CharacterMovementSpeed * Time.deltaTime, Space.World);
+            transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, angle + 90.0f));
+
+
+            //Direcciones
+
+            Vector2 dir = Vector2.zero;
+
+            if (Input.GetKey(KeyCode.D)) //Si el jugador tiene el boton "D" pulsado 
+            {
+                dir += Vector2.right; //Se mueve a la derecha
+            }
+
+            if (Input.GetKey(KeyCode.A)) //Si el jugador tiene el boton "A" pulsado 
+            {
+                dir += Vector2.left; //Se mueve hacia la izquierda
+            }
+
+            if (Input.GetKey(KeyCode.W)) //Si el jugador tiene el boton "W" pulsado 
+            {
+                dir += Vector2.up; //Se mueve hacia arriba
+            }
+
+            if (Input.GetKey(KeyCode.S)) //Si el jugador tiene el boton "S" pulsado 
+            {
+                dir += Vector2.down; //Se mueve hacia abajo
+            }
+
+            transform.Translate(dir.normalized * CharacterMovementSpeed * Time.deltaTime, Space.World);
+        }
     }
 
     public override void TakeDamage(int damage)

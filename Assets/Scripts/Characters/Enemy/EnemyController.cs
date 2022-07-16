@@ -4,10 +4,16 @@ using UnityEngine;
 public class EnemyController : CharacterController {
     [SerializeField] private int _defaultCharacterLife;
 
+    [SerializeField] private int enemyScore;
+
+
+    private GameManager _gameManager;
+
     // Start is called before the first frame update
     void Start()
     {
         _defaultCharacterLife = CharacterLife;
+        _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -22,6 +28,7 @@ public class EnemyController : CharacterController {
 
     public override void Die()
     {
+        _gameManager.AddScore(enemyScore);
         gameObject.SetActive(false);
     }
 
@@ -33,7 +40,7 @@ public class EnemyController : CharacterController {
     }
 
     public override void TakeDamage(int damage)
-    {
+    { 
         CharacterLife -= damage;
     }
 

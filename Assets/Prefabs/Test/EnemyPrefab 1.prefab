@@ -115,8 +115,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CharacterLife: 1
-  CharacterMovementSpeed: 7
+  CharacterMovementSpeed: 3
   _defaultCharacterLife: 1
+  enemyScore: 10
 --- !u!50 &7633603846359077680
 Rigidbody2D:
   serializedVersion: 4
