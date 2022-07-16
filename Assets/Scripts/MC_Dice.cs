@@ -15,6 +15,8 @@ public class MC_Dice : MonoBehaviour
     public GameObject Dagger;
     public GameObject Axe;
     public GameObject Sword;
+    public PlayerController playerController;
+
 
 /*
  * 0 is Sword
@@ -36,7 +38,7 @@ public class MC_Dice : MonoBehaviour
         return 0; //Todo Ok
     }
 
-    public int remplaceWeapon(int newWeapon, int oldWeapon) //Metodo para remplazar un arma
+    public int replaceWeapon(int newWeapon, int oldWeapon) //Metodo para remplazar un arma
     {
         if (Weapons[oldWeapon] != null)  //Si la antigua arma esta
         {
@@ -51,11 +53,14 @@ public class MC_Dice : MonoBehaviour
     void Start()
     {
 
-        addWeapon(0); //Empezamos con la espada
+        //Empezamos con la espada
+        addWeapon(0);
         addWeapon(1);
         addWeapon(2);
         addWeapon(3);
         addWeapon(4);
+
+
         ActiveWeapon(0); //La activamos
     }
 
@@ -87,7 +92,7 @@ public class MC_Dice : MonoBehaviour
             number = Random.Range(0, 6); //elegimos numero al azar 
             
         }
-        while (number > Weapons.Count-1 || OldNumber == number);
+        while (number > Weapons.Count || OldNumber == number);
         OldNumber = number; //Guardamos el resultado anterior
         return number; //devuelve el numero
     }
@@ -104,18 +109,23 @@ public class MC_Dice : MonoBehaviour
         {
             case 0:
                 Sword.SetActive(true);
+                playerController.SetWeapon(Sword.GetComponent<Weapon>());
                 break;
             case 1:
                 Bow.SetActive(true);
+                playerController.SetWeapon(Bow.GetComponent<Weapon>());
                 break;
             case 2:
                 Dagger.SetActive(true);
+                playerController.SetWeapon(Dagger.GetComponent<Weapon>());
                 break;
             case 3:
                 Staff.SetActive(true);
+                playerController.SetWeapon(Staff.GetComponent<Weapon>());
                 break;
             case 4:
                 Axe.SetActive(true);
+                playerController.SetWeapon(Axe.GetComponent<Weapon>());
                 break;
             default:
                 Debug.LogError("Error");
@@ -133,7 +143,6 @@ public class MC_Dice : MonoBehaviour
             int weapon = (int)Weapons[ArrayInt];
             ActiveWeapon(weapon);
         }
-        
         
     }
 

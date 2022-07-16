@@ -1,11 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
+using UnityEngine; 
 
 public abstract class Projectile : MonoBehaviour
 {
     public int damage = 1;
-
     public float speed = 3f;
 
     public bool isEnemy = false;
@@ -24,16 +23,28 @@ public abstract class Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // TODO: Check active tag on dice
-        if (collision.transform.CompareTag("orc"))
+        if (isEnemy)
         {
-            Attack(collision.gameObject);
+            if (collision.transform.CompareTag("Player"))
+            {
+                collision.gameObject.GetComponent<CharacterController>().TakeDamage(damage);
+            }
+            Destroy(gameObject);
         }
         else
         {
-            Destroy(gameObject);
+            if (collision.transform.CompareTag(MC_Enemies.instance.CurrentEnemy) || MC_Enemies.instance.CanAttackAll())
+            {
+                Attack(collision.gameObject);
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
         }
+
     }
+
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -42,17 +53,21 @@ public abstract class Projectile : MonoBehaviour
             if (collision.transform.CompareTag("Player"))
             {
                 collision.gameObject.GetComponent<CharacterController>().TakeDamage(damage);
+                Destroy(gameObject);
             }
         }
         else
-        // TODO: Check active tag on dice
-        if (collision.transform.CompareTag("orc"))
         {
-            Attack(collision.gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
+            if (collision.transform.CompareTag(MC_Enemies.instance.CurrentEnemy) || MC_Enemies.instance.CanAttackAll())
+            {
+                Attack(collision.gameObject);
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
         }
     }
+       
+       
 }
