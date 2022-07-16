@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 {
     SpawnManager _spawnManager;
     public TimerController _timerController;
+    UIController _uIController;
     [SerializeField] private bool _gameStarted = false;
     [SerializeField] private bool _gamePaused = false;
 
@@ -35,6 +36,7 @@ public class GameManager : MonoBehaviour
     private void LoadEntities() {
         _spawnManager = GetComponent<SpawnManager>();
         _timerController = GetComponent<TimerController>();
+        _uIController = GetComponent<UIController>();
     }
 
     private void SetUpGame() {
@@ -66,6 +68,7 @@ public class GameManager : MonoBehaviour
         playerMovementLocked = false;
         Time.timeScale = 1f;
         _timerController.Resume();
+        _uIController.Activate("GameScreen");
     }
 
     private void PauseGame() {
@@ -73,6 +76,7 @@ public class GameManager : MonoBehaviour
         playerMovementLocked = true;
         Time.timeScale = 0f;
         _timerController.Pause();
+        _uIController.Activate("PauseScreen");
     }
 
     public void AddScore(int score)

@@ -36,11 +36,12 @@ public class UIController : MonoBehaviour
         _screensAvailable.Add("PauseScreen", _pauseScreenElements);
         _screensAvailable.Add("GameOverScreen", _gameOverScreenElements);
     }
-    private void Activate(string currentScreen) {
+    public void Activate(string currentScreen) {
         _currentScreen = currentScreen;
         foreach(KeyValuePair<string, List<GameObject>> entry in _screensAvailable){
             if (entry.Key.Equals(currentScreen)) {
                 EnableScreen(entry.Value);
+                continue;
             }
             DisableScreen(entry.Value);
         }
