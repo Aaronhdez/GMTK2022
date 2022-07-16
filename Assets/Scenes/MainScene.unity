@@ -201,9 +201,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23a8534569f060441a80e647057567eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _timerController: {fileID: 0}
   _gameStarted: 0
   _gamePaused: 0
+  _gameOver: 0
   playerMovementLocked: 1
 --- !u!4 &193547058
 Transform:
@@ -258,6 +258,9 @@ MonoBehaviour:
   _enemiesAvailable:
   - {fileID: 7558021017037037513, guid: 87e8beb4510d01542ac55c3bffee2e17, type: 3}
   - {fileID: 7558021017037037513, guid: 20386747997bb55408c12e679764a693, type: 3}
+  - {fileID: 7558021017037037513, guid: 87e8beb4510d01542ac55c3bffee2e17, type: 3}
+  - {fileID: 7605456586634577121, guid: 071c2204fde0deb45b2691733512e421, type: 3}
+  - {fileID: 1920308268841373906, guid: f14c56ff0dc0b9e4985c3ee29566a1e6, type: 3}
   _spawnPoints:
   - {fileID: 557406349}
   - {fileID: 1049502672}
