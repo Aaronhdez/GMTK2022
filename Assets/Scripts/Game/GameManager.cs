@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviour {
             GameOver();
         }
 
-        if (!_gameStarted && Input.GetKeyDown(KeyCode.Return)) {
+        if (!_gameStarted && Input.GetKeyDown(KeyCode.Space)) {
             _gameStarted = true;
             playerMovementLocked = false;
             _timerController.StartTimer();
