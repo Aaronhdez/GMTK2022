@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Staff : Weapon
 {
+
+    [SerializeField] public AudioSource fireWithStaff;
     public Transform spawnPoint;
     public GameObject fireballGO;
 
@@ -14,6 +16,7 @@ public class Staff : Weapon
             return;
         }
 
+
         GameObject projectile = Instantiate(fireballGO, spawnPoint.position, spawnPoint.rotation);
 
         if (isEnemy)
@@ -21,6 +24,7 @@ public class Staff : Weapon
             int LayerEnemyBullets = LayerMask.NameToLayer("EnemyBullets");
             projectile.layer = LayerEnemyBullets;
             projectile.GetComponent<Projectile>().isEnemy = isEnemy;
+            fireWithStaff.Play();
         }
     }
 }

@@ -5,6 +5,7 @@ using UnityEngine;
 public class Bow : Weapon
 {
 
+    [SerializeField] public AudioSource fireWithBow;
     public Transform spawnPoint;
     public GameObject arrowGO;
 
@@ -14,7 +15,6 @@ public class Bow : Weapon
         {
             return;
         }
-
         GameObject projectile = Instantiate(arrowGO, spawnPoint.position, spawnPoint.rotation);
 
         if (isEnemy)
@@ -22,6 +22,7 @@ public class Bow : Weapon
             int LayerEnemyBullets = LayerMask.NameToLayer("EnemyBullets");
             projectile.layer = LayerEnemyBullets;
             projectile.GetComponent<Projectile>().isEnemy = isEnemy;
+            fireWithBow.Play();
         }
     }
 }
