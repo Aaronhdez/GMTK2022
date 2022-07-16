@@ -8,13 +8,15 @@ public class GameManager : MonoBehaviour {
     SpawnManager _spawnManager;
     TimerController _timerController;
     UIController _uiController;
-    SoundController _soundController;
+    SoundManager _soundController;
 
     [SerializeField] private bool _gameStarted = false;
     [SerializeField] private bool _gamePaused = false;
+    [SerializeField] private bool _gameOver = false;
 
     public bool playerMovementLocked = true;
     private int score;
+
     public event Action<int> EnemyDiedEvent;
 
 
@@ -36,17 +38,18 @@ public class GameManager : MonoBehaviour {
         _spawnManager = GetComponent<SpawnManager>();
         _timerController = GetComponent<TimerController>();
         _uiController = GetComponent<UIController>();
-        _soundController = GetComponent<SoundController>();
+        _soundController = GetComponent<SoundManager>();
     }
 
     private void SetUpGame() {
         score = 0;
         _spawnManager.LoadSpawnManager();
+        _soundController.PlayMainMenuMusic();
     }
 
 
     void Update() {
-        if (_player.CharacterLife == 0) {
+        if (!_gameOver && _player.CharacterLife == 0) {
             GameOver();
         }
 
@@ -54,6 +57,7 @@ public class GameManager : MonoBehaviour {
             _gameStarted = true;
             playerMovementLocked = false;
             _timerController.StartTimer();
+            _soundController.PlayGameMusic();
             _spawnManager.StartSpawnManager();
         }
 
@@ -84,10 +88,11 @@ public class GameManager : MonoBehaviour {
     }
 
     private void GameOver() {
-        _gamePaused = true;
+        _gameOver = true;
         playerMovementLocked = true;
         Time.timeScale = 0f;
         _timerController.Pause();
+        _soundController.PlayGameOverMusic();
         _uiController.Activate("GameOverScreen");
     }
 
