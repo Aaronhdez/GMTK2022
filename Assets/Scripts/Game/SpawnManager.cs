@@ -61,7 +61,7 @@ public class SpawnManager : MonoBehaviour
 
     private void Activate(GameObject gameObject) {
         //REVISAR IN-GAME
-        var availableSpawnPoints = _spawnPoints.Where(s => s.GetComponent<SpawnPointController>()._isActive).ToList();
+        var availableSpawnPoints = _spawnPoints.Where(s => s.GetComponent<SpawnPointController>().IsActive).ToList();
         var index = UnityEngine.Random.Range(0, _spawnPoints.Count);
         gameObject.transform.position = availableSpawnPoints[index].transform.position;
         //Rotar respecto a centro (opcional)
@@ -75,7 +75,6 @@ public class SpawnManager : MonoBehaviour
     }
 
     public void Update() {
-        var availableSpawnPoints = _spawnPoints.Where(s => s.GetComponent<SpawnPointController>()._isActive).ToList();
         if (_spawningEnabled) {
             CheckSpawnEnemies();
         }
