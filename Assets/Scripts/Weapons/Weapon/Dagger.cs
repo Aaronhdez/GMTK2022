@@ -28,10 +28,11 @@ public class Dagger : Weapon
                     }
                 }
                 else
-                // TODO: Check active tag on dice
-                if (enemy.CompareTag("orc"))
                 {
-                    enemy.GetComponent<CharacterController>().TakeDamage(damage);
+                    if (enemy.CompareTag(EnemiesDiceController.instance.currentEnemy) || EnemiesDiceController.instance.AttackAll)
+                    {
+                        enemy.GetComponent<CharacterController>().TakeDamage(damage);
+                    }
                 }
             }
         }

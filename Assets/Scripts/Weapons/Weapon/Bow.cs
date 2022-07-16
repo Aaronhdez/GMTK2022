@@ -8,14 +8,6 @@ public class Bow : Weapon
     public Transform spawnPoint;
     public GameObject arrowGO;
 
-    private void Update()
-    {   /*
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Attack();
-        }*/
-    }
-
     public override void Attack()
     {
         if (!Cooldown())
@@ -23,6 +15,7 @@ public class Bow : Weapon
             return;
         }
 
-        Instantiate(arrowGO, spawnPoint.position, spawnPoint.rotation);
+        GameObject projectile = Instantiate(arrowGO, spawnPoint.position, spawnPoint.rotation);
+        projectile.GetComponent<Projectile>().isEnemy = isEnemy;
     }
 }

@@ -26,8 +26,7 @@ public class Sword : Weapon
                     enemy.GetComponent<CharacterController>().TakeDamage(damage);
                 }
             } else
-            // TODO: Check active tag on dice
-            if (enemy.CompareTag("orc"))
+            if (enemy.CompareTag(EnemiesDiceController.instance.currentEnemy) || EnemiesDiceController.instance.AttackAll)
             {
                 enemy.GetComponent<CharacterController>().TakeDamage(damage);
             }

@@ -15,7 +15,7 @@ public class EnemyController : CharacterController {
     // Start is called before the first frame update
     void Start()
     {
-        _defaultCharacterLife = CharacterLife;
+        _defaultCharacterLife = characterLife;
         _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
@@ -45,16 +45,16 @@ public class EnemyController : CharacterController {
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
 
-        transform.Translate((player.transform.position - transform.position).normalized * CharacterMovementSpeed * Time.deltaTime);
+        transform.Translate((player.transform.position - transform.position).normalized * characterMovementSpeed * Time.deltaTime);
     }
 
     public override void TakeDamage(int damage)
     { 
-        CharacterLife -= damage;
+        characterLife -= damage;
     }
 
     public void ResetToDefaults() {
-        CharacterLife = _defaultCharacterLife;
+        characterLife = _defaultCharacterLife;
     }
 
     private void OnDrawGizmosSelected()

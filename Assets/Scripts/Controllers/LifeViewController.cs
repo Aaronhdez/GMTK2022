@@ -23,7 +23,7 @@ public class LifeViewController : MonoBehaviour
 
     void OnPlayerDamaged(int health)
     {
-        switch (player.CharacterLife)
+        switch (player.characterLife)
         {
             case 6:
                 lifeImage.sprite = lifes[0];

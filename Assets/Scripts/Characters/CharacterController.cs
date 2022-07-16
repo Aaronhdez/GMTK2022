@@ -5,8 +5,8 @@ using UnityEngine;
 
 public abstract class CharacterController: MonoBehaviour {
 
-    public int CharacterLife;
-    public float CharacterMovementSpeed;
+    public int characterLife;
+    public float characterMovementSpeed;
     public bool dead;
 
     public abstract void Move();
@@ -17,7 +17,7 @@ public abstract class CharacterController: MonoBehaviour {
 
     public void Revive()
     {
-        CharacterLife = 6;
+        characterLife = 6;
         dead = true;
     }
 
