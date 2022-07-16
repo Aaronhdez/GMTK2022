@@ -11,7 +11,7 @@ public abstract class Projectile : MonoBehaviour
 
     private void Start()
     {
-        Destroy(gameObject, 20);
+        Destroy(gameObject, 10);
     }
 
     private void Update()
@@ -21,35 +21,11 @@ public abstract class Projectile : MonoBehaviour
 
     public abstract void Attack(GameObject enemy);
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (isEnemy)
-        {
-            if (collision.transform.CompareTag("Player"))
-            {
-                collision.gameObject.GetComponent<CharacterController>().TakeDamage(damage);
-            }
-            Destroy(gameObject);
-        }
-        else
-        {
-            if (collision.transform.CompareTag(EnemiesDiceController.instance._currentEnemy) || EnemiesDiceController.instance.AttackAll)
-            {
-                Attack(collision.gameObject);
-            }
-            else
-            {
-                Destroy(gameObject);
-            }
-        }
-
-    }
-
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (isEnemy)
         {
+            Debug.Log("contact");
             if (collision.transform.CompareTag("Player"))
             {
                 collision.gameObject.GetComponent<CharacterController>().TakeDamage(damage);
