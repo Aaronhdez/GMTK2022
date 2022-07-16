@@ -53,13 +53,15 @@ public class SpawnManager : MonoBehaviour
                 ActivateEnemy(nonActiveEnemies[index]);
             }
         }
+        _spawnPoints.ForEach(s => s.SetActive(true));
     }
 
     private void ActivateEnemy(GameObject gameObject) {
         var availableSpawnPoints = _spawnPoints.Where(
             s => s.GetComponent<SpawnPointController>().IsActive).ToList();
-        var index = UnityEngine.Random.Range(0, _spawnPoints.Count);
+        var index = UnityEngine.Random.Range(0, availableSpawnPoints.Count);
         gameObject.transform.position = availableSpawnPoints[index].transform.position;
+        availableSpawnPoints[index].SetActive(false);
         gameObject.GetComponent<EnemyController>().ResetToDefaults();
         gameObject.SetActive(true);
     }
