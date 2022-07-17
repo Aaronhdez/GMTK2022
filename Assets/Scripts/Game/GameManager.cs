@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
     [Header("Entities")]
-    [SerializeField] CharacterController _player;
+    [SerializeField] PlayerController _player;
     [SerializeField] SpawnManager _spawnManager;
     [SerializeField] TimerController _timerController;
     [SerializeField] UIController _uiController;
@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour {
     }
 
     private void LoadEntities() {
-        _player = GameObject.FindWithTag("Player").GetComponent<CharacterController>();
+        _player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
         _spawnManager = GetComponent<SpawnManager>();
         _timerController = GetComponent<TimerController>();
         _uiController = GetComponent<UIController>();
@@ -123,6 +123,7 @@ public class GameManager : MonoBehaviour {
 
     public void AddScore(int score) {
         this.score += score;
+        _player.AddKill();
         EnemyDiedEvent?.Invoke(this.score);
     }
 }
