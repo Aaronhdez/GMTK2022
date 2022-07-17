@@ -10,6 +10,9 @@ TagManager:
   - beast
   - ogre
   - all
+  - Arena
+  - Beast
+  - Orc
   layers:
   - Default
   - TransparentFX
@@ -19,8 +22,8 @@ TagManager:
   - UI
   - Player
   - Enemy
-  - 
-  - 
+  - EnemyBullets
+  - PlayerBullets
   - 
   - 
   - 

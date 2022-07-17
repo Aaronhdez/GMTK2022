@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class Axe : Weapon
 {
+
+    [SerializeField] public AudioSource hitWithAxe;
     public Transform attackPoint;
     public float attackRange = 0.5f;
+
+    [SerializeField] private Animator beastAnimator;
+
 
     public override void Attack()
     {
@@ -13,15 +18,19 @@ public class Axe : Weapon
         {
             return;
         }
-
+        
         Collider2D[] hitEnemies = (isEnemy) ? Physics2D.OverlapCircleAll(attackPoint.position, attackRange, LayerMask.GetMask("Player")) : Physics2D.OverlapCircleAll(attackPoint.position, attackRange, LayerMask.GetMask("Enemy"));
 
         foreach (Collider2D enemy in hitEnemies)
         {
+            
             if (isEnemy)
             {
                 if (enemy.CompareTag("Player"))
                 {
+                    //beastAnimator.SetBool("Attack", true);
+                    beastAnimator.Play("Beast_Idle");
+                    hitWithAxe.Play();
                     enemy.GetComponent<CharacterController>().TakeDamage(damage);
                 }
             }

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Dagger : Weapon
 {
+
+    [SerializeField] public AudioSource hitWithDagger;
     public Transform[] attackPoints;
     public float attackRange = 0.5f;
 
@@ -20,10 +22,12 @@ public class Dagger : Weapon
 
             foreach (Collider2D enemy in hitEnemies)
             {
+                
                 if (isEnemy)
                 {
                     if (enemy.CompareTag("Player"))
                     {
+                        hitWithDagger.Play();
                         enemy.GetComponent<CharacterController>().TakeDamage(damage);
                     }
                 }
