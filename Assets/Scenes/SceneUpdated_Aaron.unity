@@ -222,7 +222,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 131706746}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 5, z: 0}
+  m_LocalPosition: {x: 0, y: 16, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -279,7 +279,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 381212258}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -5, z: 0}
+  m_LocalPosition: {x: 0, y: -16, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -528,7 +528,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 861823376}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8, y: 0, z: 0}
+  m_LocalPosition: {x: -16, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -626,8 +626,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemiesAliveLimit: 2
   _amountOfEnemiesSpawnedAtOnce: 3
-  _minimumSpawnRate: 5
-  _maximumSpawnRate: 8
+  _minimumSpawnRate: 10
+  _maximumSpawnRate: 15
   _enemiesAvailable:
   - {fileID: 7558021017037037513, guid: 87e8beb4510d01542ac55c3bffee2e17, type: 3}
   - {fileID: 7558021017037037513, guid: 20386747997bb55408c12e679764a693, type: 3}
@@ -651,6 +651,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23a8534569f060441a80e647057567eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _player: {fileID: 0}
+  _spawnManager: {fileID: 0}
+  _timerController: {fileID: 0}
+  _uiController: {fileID: 0}
+  _soundController: {fileID: 0}
+  _weaponsDiceController: {fileID: 1906547896}
+  _enemiesDiceController: {fileID: 905764239}
   _gameStarted: 0
   _gamePaused: 0
   _gameOver: 0
@@ -991,7 +998,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfd3d03be5f746845814803ff8ec265e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rollTime: 10
+  _rollTime: 15
+  isActive: 0
   _enemiesAvailable: []
   _diceUIController: {fileID: 988638899}
   _currentEnemy: 
@@ -1332,7 +1340,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1620941043}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8, y: 0, z: 0}
+  m_LocalPosition: {x: 16, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1528,6 +1536,17 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!114 &1906547896 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9119654272885218088, guid: 426f9c9036df4fb4c9ce9c8a29ddedb4, type: 3}
+  m_PrefabInstance: {fileID: 1946836320}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1906547889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0b1600443ec65142a186b6197f43382, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1946836320
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1542,6 +1561,10 @@ PrefabInstance:
     - target: {fileID: 9119654272885218092, guid: 426f9c9036df4fb4c9ce9c8a29ddedb4, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 9119654272885218093, guid: 426f9c9036df4fb4c9ce9c8a29ddedb4, type: 3}
+      propertyPath: invincible
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9119654272885218093, guid: 426f9c9036df4fb4c9ce9c8a29ddedb4, type: 3}
       propertyPath: characterMovementSpeed
