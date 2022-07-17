@@ -16,7 +16,7 @@ public class WeaponsDiceController : DiceController {
         IsActive = false;
         DisableAllWeapons();
         RollTheDice();
-        _diceUIController.SetUp(0);
+        _diceUIController.SetUp(_weaponIndex);
         _playerController.SetWeapon(_weaponsAvailable[_weaponIndex]);
     }
 

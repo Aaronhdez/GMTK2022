@@ -34,8 +34,20 @@ public class EnemyController : CharacterController {
         return attackRange;
     }
 
+    private void dashAttack()
+    {
+        weapon.Attack();
+        rb.AddRelativeForce(Vector2.up * 100);
+        weapon.Attack();
+
+    }
     public override void Attack()
     {
+        if(weapon is Dagger)
+        {
+            dashAttack();
+        }
+
         weapon.Attack();
 
         GameObject player = GameObject.FindGameObjectWithTag("Player");
