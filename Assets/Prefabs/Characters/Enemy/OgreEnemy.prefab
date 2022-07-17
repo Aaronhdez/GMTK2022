@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8684906730859772104}
   - component: {fileID: 9096894623760207126}
   - component: {fileID: 492463137104521136}
-  - component: {fileID: 4104396189402241592}
+  - component: {fileID: 7505208097920317407}
   - component: {fileID: 4104396189402241599}
   - component: {fileID: 6684934889277669083}
   - component: {fileID: -467521771441790956}
@@ -104,7 +104,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   treeToLoad: Enemy_BT
   agent: {fileID: 4172234053957555910}
---- !u!114 &4104396189402241592
+--- !u!114 &7505208097920317407
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -113,7 +113,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4172234053957555910}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55ed65929bfdfb24ebd60d1e2bf333d4, type: 3}
+  m_Script: {fileID: 11500000, guid: da8083c2153ef254591652da09593e17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   characterLife: 1
@@ -124,8 +124,25 @@ MonoBehaviour:
   _defaultCharacterLife: 1
   enemyScore: 10
   enemyAnimator: {fileID: -467521771441790956}
+  deadAttack: []
   weapon: {fileID: 5040377476917939941}
   attackRange: 1.5
+  axeAttack:
+  - {fileID: 21300000, guid: f57aab0c987883c44833d1db419d1a5d, type: 3}
+  - {fileID: 21300000, guid: 135621f8559ba5a49ae981f67bb3879b, type: 3}
+  - {fileID: 21300000, guid: c3567230fa9574e418743de8c6308f1f, type: 3}
+  - {fileID: 21300000, guid: fdc97224647352045848f7aa99dbfcfb, type: 3}
+  - {fileID: 21300000, guid: 7219f30a5b114504cba27cb681f88313, type: 3}
+  beastDeath:
+  - {fileID: 21300000, guid: 7520a3478991b3a43afc50f537fea7de, type: 3}
+  - {fileID: 21300000, guid: 2b0d4c2bd463de24ab2eea8ceed6a9ac, type: 3}
+  - {fileID: 21300000, guid: 6e3c6444b1277d44e87420815148da31, type: 3}
+  - {fileID: 21300000, guid: d9e3c9c1279fa5040ba96994377d4895, type: 3}
+  - {fileID: 21300000, guid: 5da12aa32677e8347bb99cf5856a4503, type: 3}
+  - {fileID: 21300000, guid: 587b030d64293464fa293cbd98ba00d1, type: 3}
+  - {fileID: 21300000, guid: 6993129c6dc23374ba13ee911a054d6c, type: 3}
+  beast: {fileID: 9096894623760207126}
+  isplaying: 0
 --- !u!50 &4104396189402241599
 Rigidbody2D:
   serializedVersion: 4
@@ -171,7 +188,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4172234053957555910}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 69102f6f1046114478996a8dc0bc4991, type: 2}
   m_CullingMode: 0

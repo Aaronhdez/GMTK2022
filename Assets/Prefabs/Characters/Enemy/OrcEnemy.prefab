@@ -119,13 +119,23 @@ MonoBehaviour:
   characterLife: 1
   characterMovementSpeed: 4
   dead: 0
-  rb: {fileID: 0}
+  _rb: {fileID: 0}
   _speed: {x: 0, y: 0}
   _defaultCharacterLife: 1
   enemyScore: 10
   enemyAnimator: {fileID: 7493855208042880591}
+  deadAttack: []
   weapon: {fileID: 6583925305234585174}
   attackRange: 1.5
+  spriteAttack:
+  - {fileID: 21300000, guid: 67016489b378a834ea410281963ff785, type: 3}
+  - {fileID: 21300000, guid: 750f4010afff0f442a4e9a0cb692c739, type: 3}
+  - {fileID: 21300000, guid: 745356ed2abdc374995fb1b0b740614b, type: 3}
+  - {fileID: 21300000, guid: abffea5c97ba7164d8396afcc1b5f163, type: 3}
+  - {fileID: 21300000, guid: 3bf7fec6c5a9f41429fac37dc83fa830, type: 3}
+  beastDeath: []
+  _spriteRenderer: {fileID: 0}
+  isplaying: 0
 --- !u!58 &2657439037394081763
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -171,7 +181,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7558021017037037513}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 55d1feda1566f7b4c902b8dca9f19aea, type: 2}
   m_CullingMode: 0

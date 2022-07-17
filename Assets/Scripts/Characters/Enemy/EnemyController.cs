@@ -3,16 +3,20 @@ using System.Collections;
 using UnityEngine;
 
 public class EnemyController : CharacterController {
-    [SerializeField] private int _defaultCharacterLife;
+    [SerializeField] protected int _defaultCharacterLife;
 
     [SerializeField] private int enemyScore;
 
-    [SerializeField] private Animator enemyAnimator;    
+    [SerializeField] private Animator enemyAnimator;
 
-    private GameManager _gameManager;
+    [SerializeField] protected Sprite[] deadAttack;
+
+    protected GameManager _gameManager;
 
     public Weapon weapon;
     public float attackRange;
+    private bool isDead = false;
+    private bool isDying = false;
 
     // Start is called before the first frame update
     void Start()
@@ -20,7 +24,7 @@ public class EnemyController : CharacterController {
         _defaultCharacterLife = characterLife;
         _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 
-        rb = GetComponent<Rigidbody2D>();
+        _rb = GetComponent<Rigidbody2D>();
         _speed = new Vector2(0, 0);
     }
 
@@ -51,32 +55,20 @@ public class EnemyController : CharacterController {
 
         weapon.Attack();
 
-
         GameObject player = GameObject.FindGameObjectWithTag("Player");
 
         float angle = Mathf.Atan2(player.transform.position.y - transform.position.y, player.transform.position.x - transform.position.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, angle - 90f));
     }
 
-    public override void Die()
-    {
-        Debug.Log("Enemy Dead");
-        StartCoroutine(PlayAnimationDeath());
-        //enemyAnimator.Play("Enemy_Dead");
+    public override void Die() {
         _gameManager.AddScore(enemyScore);
         gameObject.SetActive(false);
     }
 
-    public IEnumerator PlayAnimationDeath()
-    {
-        enemyAnimator.SetBool("Dead", true);
-        yield return new WaitForSeconds(4f);
-    }
-
     public override void Move()
     {
-        if (!weapon.CanAttack())
-        {
+        if (!weapon.CanAttack()) {
             return;
         }
 
@@ -86,9 +78,9 @@ public class EnemyController : CharacterController {
         _speed.Normalize();
         _speed *= characterMovementSpeed * Time.deltaTime;
 
-        rb.velocity = _speed;
+        _rb.velocity = _speed;
 
-        rb.MovePosition(rb.position + _speed);
+        _rb.MovePosition(_rb.position + _speed);
 
         float angle = Mathf.Atan2(player.transform.position.y - transform.position.y, player.transform.position.x - transform.position.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, angle - 90f));
@@ -109,4 +101,6 @@ public class EnemyController : CharacterController {
     {
         Gizmos.DrawWireSphere(weapon.transform.position, attackRange);
     }
+
+
 }

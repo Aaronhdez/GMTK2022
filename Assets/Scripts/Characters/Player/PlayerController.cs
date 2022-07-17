@@ -26,7 +26,7 @@ public class PlayerController : CharacterController
         characterLife = 6;
         dead = false;
         _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        rb = GetComponent<Rigidbody2D>();
+        _rb = GetComponent<Rigidbody2D>();
         _speed = new Vector2(0, 0);
     }
 
@@ -113,16 +113,15 @@ public class PlayerController : CharacterController
             _speed.y = Input.GetAxisRaw("Vertical");
             _speed.Normalize();
             _speed *= characterMovementSpeed * Time.deltaTime;
-
            
-            rb.velocity = _speed;
+            _rb.velocity = _speed;
 
             if (weapon is Dagger)
             {
                 _speed = _speed * 1.5f;
             }
 
-            rb.MovePosition(rb.position + _speed);
+            _rb.MovePosition(_rb.position + _speed);
         }
     }
 
