@@ -123,6 +123,7 @@ MonoBehaviour:
   _speed: {x: 0, y: 0}
   _defaultCharacterLife: 1
   enemyScore: 10
+  enemyAnimator: {fileID: 7876009789005254022}
   weapon: {fileID: 940730236714850021}
   attackRange: 8
 --- !u!58 &2706206889482308811

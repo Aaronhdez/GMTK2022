@@ -36,12 +36,19 @@ public abstract class Projectile : MonoBehaviour
         {
             if (collision.transform.CompareTag(EnemiesDiceController.instance._currentEnemy) || EnemiesDiceController.instance.AttackAll)
             {
-                Attack(collision.gameObject);
+                if (collision.gameObject != null) {
+                    Attack(collision.gameObject);
+                }
             }
             else
             {
                 Destroy(gameObject);
             }
+        }
+
+        if (collision.gameObject.CompareTag("Arena"))
+        {
+            Destroy(gameObject);
         }
     }
        

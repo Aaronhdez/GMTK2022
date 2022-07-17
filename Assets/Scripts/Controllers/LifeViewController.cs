@@ -13,6 +13,9 @@ public class LifeViewController : MonoBehaviour
     [SerializeField]
     Sprite[] lifes;
 
+    [SerializeField]
+    Sprite[] impacts;
+
     private RectTransform rectTransform;
 
     void Start()
@@ -23,30 +26,20 @@ public class LifeViewController : MonoBehaviour
 
     void OnPlayerDamaged(int health)
     {
-        switch (player.characterLife)
-        {
-            case 6:
-                lifeImage.sprite = lifes[0];
-                break;
-            case 5:
-                lifeImage.sprite = lifes[1];
-                break;
-            case 4:
-                lifeImage.sprite = lifes[2];
-                break;
-            case 3:
-                lifeImage.sprite = lifes[3];
-                break;
-            case 2:
-                lifeImage.sprite = lifes[4];
-                break;
-            case 1:
-                lifeImage.sprite = lifes[5];
-                break;
-            default:
-                lifeImage.sprite = lifes[6];
-                break;
+        StartCoroutine(PlayAnimation());
+    }
 
-        }
+
+    public IEnumerator PlayAnimation()
+    {
+        yield return new WaitForSeconds(0.15f);
+        lifeImage.sprite = impacts[player.characterLife];
+        yield return new WaitForSeconds(0.15f);
+        lifeImage.sprite = lifes[player.characterLife];
+        yield return new WaitForSeconds(0.15f);
+        lifeImage.sprite = impacts[player.characterLife];
+        yield return new WaitForSeconds(0.15f);
+        lifeImage.sprite = lifes[player.characterLife];
+        yield return new WaitForSeconds(0.15f);
     }
 }

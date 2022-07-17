@@ -9,6 +9,8 @@ public class Dagger : Weapon
     public Transform[] attackPoints;
     public float attackRange = 0.5f;
 
+    [SerializeField] private Animator ghostAnimator;
+
     public override void Attack()
     {
         if (!Cooldown())
@@ -27,6 +29,7 @@ public class Dagger : Weapon
                 {
                     if (enemy.CompareTag("Player"))
                     {
+                        ghostAnimator.SetBool("Attack", true);
                         hitWithDagger.Play();
                         enemy.GetComponent<CharacterController>().TakeDamage(damage);
                     }

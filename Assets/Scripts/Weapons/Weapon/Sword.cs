@@ -9,6 +9,9 @@ public class Sword : Weapon
     public Transform attackPoint;
     public float attackRange = 0.5f;
 
+    [SerializeField] private Animator goblinAnimator;
+
+
     public override void Attack()
     {
         if (!Cooldown())
@@ -25,8 +28,8 @@ public class Sword : Weapon
                 if (enemy.CompareTag("Player"))
                 {
                     hitWithSword.Play();
+                    goblinAnimator.SetBool("Attack", true);
                     enemy.GetComponent<CharacterController>().TakeDamage(damage);
-                    hitWithSword.Play();
                 }
             } else
             if (enemy.CompareTag(EnemiesDiceController.instance._currentEnemy) || EnemiesDiceController.instance.AttackAll)
