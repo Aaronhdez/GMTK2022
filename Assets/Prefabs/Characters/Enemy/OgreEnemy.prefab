@@ -123,6 +123,7 @@ MonoBehaviour:
   _speed: {x: 0, y: 0}
   _defaultCharacterLife: 1
   enemyScore: 10
+  enemyAnimator: {fileID: -467521771441790956}
   weapon: {fileID: 5040377476917939941}
   attackRange: 1.5
 --- !u!50 &4104396189402241599
@@ -194,9 +195,9 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1510597353210987423, guid: e872f74924bf2d6469876b11455ee59a, type: 3}
-      propertyPath: attackRate
-      value: 0.75
-      objectReference: {fileID: 0}
+      propertyPath: attackPoint
+      value: 
+      objectReference: {fileID: 5346768464197467334}
     - target: {fileID: 1510597353210987423, guid: e872f74924bf2d6469876b11455ee59a, type: 3}
       propertyPath: attackRange
       value: 2
@@ -205,9 +206,17 @@ PrefabInstance:
       propertyPath: beastAnimator
       value: 
       objectReference: {fileID: -467521771441790956}
+    - target: {fileID: 1960813240075923900, guid: e872f74924bf2d6469876b11455ee59a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1960813240185469058, guid: e872f74924bf2d6469876b11455ee59a, type: 3}
       propertyPath: m_Name
       value: Axe
+      objectReference: {fileID: 0}
+    - target: {fileID: 1960813240185469058, guid: e872f74924bf2d6469876b11455ee59a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1960813240185469060, guid: e872f74924bf2d6469876b11455ee59a, type: 3}
       propertyPath: m_RootOrder
@@ -278,8 +287,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14508c5f457e77345ad8d3f45e8ffaed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 1
+  attackRate: 1
+  isEnemy: 0
+  hitWithAxe: {fileID: 0}
+  attackPoint: {fileID: 0}
+  attackRange: 0.5
+  beastAnimator: {fileID: -467521771441790956}
 --- !u!4 &5346768464075339262 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1960813240185469060, guid: e872f74924bf2d6469876b11455ee59a, type: 3}
+  m_PrefabInstance: {fileID: 5838280120227040634}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5346768464197467334 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1960813240075923900, guid: e872f74924bf2d6469876b11455ee59a, type: 3}
   m_PrefabInstance: {fileID: 5838280120227040634}
   m_PrefabAsset: {fileID: 0}

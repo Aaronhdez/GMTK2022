@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class EnemyController : CharacterController {
@@ -6,7 +7,7 @@ public class EnemyController : CharacterController {
 
     [SerializeField] private int enemyScore;
 
-    
+    [SerializeField] private Animator enemyAnimator;    
 
     private GameManager _gameManager;
 
@@ -59,8 +60,17 @@ public class EnemyController : CharacterController {
 
     public override void Die()
     {
+        Debug.Log("Enemy Dead");
+        StartCoroutine(PlayAnimationDeath());
+        //enemyAnimator.Play("Enemy_Dead");
         _gameManager.AddScore(enemyScore);
         gameObject.SetActive(false);
+    }
+
+    public IEnumerator PlayAnimationDeath()
+    {
+        enemyAnimator.SetBool("Dead", true);
+        yield return new WaitForSeconds(4f);
     }
 
     public override void Move()
