@@ -199,12 +199,24 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5346768464197467334}
     - target: {fileID: 1510597353210987423, guid: e872f74924bf2d6469876b11455ee59a, type: 3}
+      propertyPath: attackRange
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1510597353210987423, guid: e872f74924bf2d6469876b11455ee59a, type: 3}
       propertyPath: beastAnimator
       value: 
       objectReference: {fileID: -467521771441790956}
+    - target: {fileID: 1960813240075923900, guid: e872f74924bf2d6469876b11455ee59a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1960813240185469058, guid: e872f74924bf2d6469876b11455ee59a, type: 3}
       propertyPath: m_Name
       value: Axe
+      objectReference: {fileID: 0}
+    - target: {fileID: 1960813240185469058, guid: e872f74924bf2d6469876b11455ee59a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1960813240185469060, guid: e872f74924bf2d6469876b11455ee59a, type: 3}
       propertyPath: m_RootOrder
@@ -298,7 +310,7 @@ MonoBehaviour:
   hitWithAxe: {fileID: 0}
   attackPoint: {fileID: 0}
   attackRange: 0.5
-  beastAnimator: {fileID: 0}
+  beastAnimator: {fileID: -467521771441790956}
 --- !u!4 &5346768464075339262 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1960813240185469060, guid: e872f74924bf2d6469876b11455ee59a, type: 3}

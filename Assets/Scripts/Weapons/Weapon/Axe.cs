@@ -42,11 +42,6 @@ public class Axe : Weapon
             }            
         }
     }
-
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
-    }
 }
 
 

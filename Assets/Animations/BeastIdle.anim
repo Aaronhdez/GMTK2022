@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Beast_Idle
+  m_Name: BeastIdle
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,30 +20,12 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-<<<<<<< HEAD:Assets/Animations/GhostAttack.anim
-      value: {fileID: 1632339533, guid: 18d961aeb32e1314cb65b9efc8559a6b, type: 3}
-    - time: 0.125
-      value: {fileID: -1618519774, guid: 18d961aeb32e1314cb65b9efc8559a6b, type: 3}
-    - time: 0.375
-      value: {fileID: -1925146405, guid: 18d961aeb32e1314cb65b9efc8559a6b, type: 3}
-    - time: 0.5
-      value: {fileID: -1074223096, guid: 18d961aeb32e1314cb65b9efc8559a6b, type: 3}
-    - time: 0.625
-      value: {fileID: -1792463339, guid: 18d961aeb32e1314cb65b9efc8559a6b, type: 3}
-    - time: 0.875
-      value: {fileID: 1643374638, guid: 18d961aeb32e1314cb65b9efc8559a6b, type: 3}
-=======
       value: {fileID: 21300000, guid: f57aab0c987883c44833d1db419d1a5d, type: 3}
->>>>>>> 099131967b3327dd0d03af27325748196be80734:Assets/Animations/Beast_Idle.anim
     attribute: m_Sprite
     path: 
     classID: 212
     script: {fileID: 0}
-<<<<<<< HEAD:Assets/Animations/GhostAttack.anim
-  m_SampleRate: 8
-=======
   m_SampleRate: 60
->>>>>>> 099131967b3327dd0d03af27325748196be80734:Assets/Animations/Beast_Idle.anim
   m_WrapMode: 0
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
@@ -58,16 +40,7 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-<<<<<<< HEAD:Assets/Animations/GhostAttack.anim
-    - {fileID: 1632339533, guid: 18d961aeb32e1314cb65b9efc8559a6b, type: 3}
-    - {fileID: -1618519774, guid: 18d961aeb32e1314cb65b9efc8559a6b, type: 3}
-    - {fileID: -1925146405, guid: 18d961aeb32e1314cb65b9efc8559a6b, type: 3}
-    - {fileID: -1074223096, guid: 18d961aeb32e1314cb65b9efc8559a6b, type: 3}
-    - {fileID: -1792463339, guid: 18d961aeb32e1314cb65b9efc8559a6b, type: 3}
-    - {fileID: 1643374638, guid: 18d961aeb32e1314cb65b9efc8559a6b, type: 3}
-=======
     - {fileID: 21300000, guid: f57aab0c987883c44833d1db419d1a5d, type: 3}
->>>>>>> 099131967b3327dd0d03af27325748196be80734:Assets/Animations/Beast_Idle.anim
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}

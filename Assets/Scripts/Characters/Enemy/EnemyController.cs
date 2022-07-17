@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class EnemyController : CharacterController {
@@ -48,10 +49,16 @@ public class EnemyController : CharacterController {
     public override void Die()
     {
         Debug.Log("Enemy Dead");
-        //enemyAnimator.SetBool("Dead", true);
-        enemyAnimator.Play("Enemy_Dead");
+        StartCoroutine(PlayAnimationDeath());
+        //enemyAnimator.Play("Enemy_Dead");
         _gameManager.AddScore(enemyScore);
         gameObject.SetActive(false);
+    }
+
+    public IEnumerator PlayAnimationDeath()
+    {
+        enemyAnimator.SetBool("Dead", true);
+        yield return new WaitForSeconds(4f);
     }
 
     public override void Move()
