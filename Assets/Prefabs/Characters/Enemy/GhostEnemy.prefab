@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 3504250471428815506}
   m_Layer: 7
   m_Name: GhostEnemy
-  m_TagString: Beast
+  m_TagString: beast
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -124,7 +124,7 @@ MonoBehaviour:
   _defaultCharacterLife: 1
   enemyScore: 10
   weapon: {fileID: 3968532033910934866}
-  attackRange: 1.5
+  attackRange: 2
 --- !u!50 &7633603846359077680
 Rigidbody2D:
   serializedVersion: 4
@@ -252,6 +252,10 @@ PrefabInstance:
     - target: {fileID: 3093865631848396650, guid: 49965abfe95e7564e9a9c6321d44d1dd, type: 3}
       propertyPath: isEnemy
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3093865631848396650, guid: 49965abfe95e7564e9a9c6321d44d1dd, type: 3}
+      propertyPath: attackRange
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 3093865631848396651, guid: 49965abfe95e7564e9a9c6321d44d1dd, type: 3}
       propertyPath: m_Name
