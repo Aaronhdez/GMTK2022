@@ -117,13 +117,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterLife: 1
-  characterMovementSpeed: 5
+  characterMovementSpeed: 4
   dead: 0
-  rb: {fileID: 0}
+  _rb: {fileID: 0}
   _speed: {x: 0, y: 0}
   _defaultCharacterLife: 1
   enemyScore: 10
   enemyAnimator: {fileID: 9177818699241919741}
+  deadAttack: []
   weapon: {fileID: 3968532033910934866}
   attackRange: 1.4
 --- !u!50 &7633603846359077680

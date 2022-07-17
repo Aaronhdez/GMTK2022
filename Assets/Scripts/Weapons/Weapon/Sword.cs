@@ -9,14 +9,19 @@ public class Sword : Weapon
     public Transform attackPoint;
     public float attackRange = 0.5f;
 
-    [SerializeField] private Animator goblinAnimator;
-
+    private bool isplaying = false;
+    [SerializeField] private Sprite[] swordAttack;
 
     public override void Attack()
     {
         if (!Cooldown())
         {
             return;
+        }
+
+        if (!isEnemy)
+        {
+            StartCoroutine(PlayAnimationAttack());
         }
 
         Collider2D[] hitEnemies = (isEnemy) ? Physics2D.OverlapCircleAll(attackPoint.position, attackRange, LayerMask.GetMask("Player")) : Physics2D.OverlapCircleAll(attackPoint.position, attackRange, LayerMask.GetMask("Enemy"));
@@ -28,7 +33,6 @@ public class Sword : Weapon
                 if (enemy.CompareTag("Player"))
                 {
                     hitWithSword.Play();
-                    goblinAnimator.SetBool("Attack", true);
                     enemy.GetComponent<CharacterController>().TakeDamage(damage);
                 }
             } else
@@ -42,5 +46,17 @@ public class Sword : Weapon
     private void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+    }
+    public IEnumerator PlayAnimationAttack()
+    {
+        isplaying = true;
+        var spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        for (int i = 1; i < swordAttack.Length; i++)
+        {
+            spriteRenderer.sprite = swordAttack[i];
+            yield return new WaitForSeconds(0.25f);
+        }
+        spriteRenderer.sprite = swordAttack[0];
+        isplaying = false;
     }
 }

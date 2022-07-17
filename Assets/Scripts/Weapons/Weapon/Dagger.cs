@@ -9,13 +9,20 @@ public class Dagger : Weapon
     public Transform[] attackPoints;
     public float attackRange = 0.5f;
 
-    [SerializeField] private Animator ghostAnimator;
+    private bool isplaying = false;
+
+    [SerializeField] private Sprite[] daggerAttack;
 
     public override void Attack()
     {
         if (!Cooldown())
         {
             return;
+        }
+
+        if (!isEnemy)
+        {
+            StartCoroutine(PlayAnimationAttack());
         }
 
         foreach (Transform attackPoint in attackPoints)
@@ -29,7 +36,6 @@ public class Dagger : Weapon
                 {
                     if (enemy.CompareTag("Player"))
                     {
-                        ghostAnimator.SetBool("Attack", true);
                         hitWithDagger.Play();
                         enemy.GetComponent<CharacterController>().TakeDamage(damage);
                     }
@@ -49,5 +55,18 @@ public class Dagger : Weapon
     {
         Gizmos.DrawWireSphere(attackPoints[0].position, attackRange);
         Gizmos.DrawWireSphere(attackPoints[1].position, attackRange);
+    }
+
+    public IEnumerator PlayAnimationAttack()
+    {
+        isplaying = true;
+        var spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        for (int i = 1; i < daggerAttack.Length; i++)
+        {
+            spriteRenderer.sprite = daggerAttack[i];
+            yield return new WaitForSeconds(0.25f);
+        }
+        spriteRenderer.sprite = daggerAttack[0];
+        isplaying = false;
     }
 }

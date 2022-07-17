@@ -9,8 +9,8 @@ public class Axe : Weapon
     public Transform attackPoint;
     public float attackRange = 0.5f;
 
-    [SerializeField] private Animator beastAnimator;
-
+    private bool isplaying = false;
+    [SerializeField] private Sprite[] axeAttack;
 
     public override void Attack()
     {
@@ -18,7 +18,12 @@ public class Axe : Weapon
         {
             return;
         }
-        
+
+        if (!isEnemy)
+        {
+            StartCoroutine(PlayAnimationAttack());
+        }
+
         Collider2D[] hitEnemies = (isEnemy) ? Physics2D.OverlapCircleAll(attackPoint.position, attackRange, LayerMask.GetMask("Player")) : Physics2D.OverlapCircleAll(attackPoint.position, attackRange, LayerMask.GetMask("Enemy"));
 
         foreach (Collider2D enemy in hitEnemies)
@@ -28,7 +33,6 @@ public class Axe : Weapon
             {
                 if (enemy.CompareTag("Player"))
                 {
-                    //beastAnimator.SetBool("Attack", true);
                     hitWithAxe.Play();
                     enemy.GetComponent<CharacterController>().TakeDamage(damage);
                 }
@@ -41,6 +45,24 @@ public class Axe : Weapon
                 }
             }            
         }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+    }
+
+    public IEnumerator PlayAnimationAttack()
+    {
+        isplaying = true;
+        var spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        for (int i = 1; i < axeAttack.Length; i++)
+        {
+            spriteRenderer.sprite = axeAttack[i];
+            yield return new WaitForSeconds(0.25f);
+        }
+        spriteRenderer.sprite = axeAttack[0];
+        isplaying = false;
     }
 }
 

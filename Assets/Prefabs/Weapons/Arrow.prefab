@@ -133,7 +133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  speed: 5
+  speed: 7
   isEnemy: 0
   hitWithArrow: {fileID: -7213559189765353799}
 --- !u!82 &-7213559189765353799

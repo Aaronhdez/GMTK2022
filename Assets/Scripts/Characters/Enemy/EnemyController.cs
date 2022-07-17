@@ -42,7 +42,7 @@ public class EnemyController : CharacterController {
     private void dashAttack()
     {
         weapon.Attack();
-        rb.AddRelativeForce(Vector2.up * 100);
+        _rb.AddRelativeForce(Vector2.up * 100);
         weapon.Attack();
 
     }
@@ -76,7 +76,7 @@ public class EnemyController : CharacterController {
         _speed.x = Input.GetAxisRaw("Horizontal");
         _speed.y = Input.GetAxisRaw("Vertical");
         _speed.Normalize();
-        _speed *= characterMovementSpeed * Time.deltaTime;
+        _speed *= characterMovementSpeed * Time.fixedDeltaTime;
 
         _rb.velocity = _speed;
 

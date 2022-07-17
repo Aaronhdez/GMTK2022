@@ -19,6 +19,8 @@ public class PlayerController : CharacterController
     [SerializeField]
     private Weapon weapon;
 
+    [SerializeField] Sprite[] invincibleSprites;
+
 
     // Start is called before the first frame update
     void Start()
@@ -68,12 +70,12 @@ public class PlayerController : CharacterController
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            if(weapon is Dagger)
+            if (weapon is Dagger)
             {
                 _ = StartCoroutine("InivicibleDagger");
             }
             weapon.Attack();
-            
+
         }
     }
 
@@ -81,7 +83,8 @@ public class PlayerController : CharacterController
     {
         _enemiesDefeated++;
 
-        if (_enemiesDefeated >= 10 && characterLife < 6){
+        if (_enemiesDefeated >= 10 && characterLife < 6)
+        {
             characterLife++;
             playerDamagedEvent?.Invoke(characterLife);
             _enemiesDefeated = 0;
@@ -109,11 +112,12 @@ public class PlayerController : CharacterController
             transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, angle + 90.0f));
 
             //Direcciones
+
             _speed.x = Input.GetAxisRaw("Horizontal");
             _speed.y = Input.GetAxisRaw("Vertical");
             _speed.Normalize();
-            _speed *= characterMovementSpeed * Time.deltaTime;
-           
+            _speed *= characterMovementSpeed * Time.fixedDeltaTime;
+
             _rb.velocity = _speed;
 
             if (weapon is Dagger)
@@ -141,6 +145,7 @@ public class PlayerController : CharacterController
                 Die();
             }
             StartCoroutine("InvincibleTimer");
+            StartCoroutine(InvincibleAnimation());
         }
     }
 
@@ -149,6 +154,20 @@ public class PlayerController : CharacterController
         invincible = true;
         yield return new WaitForSeconds(invincibleTime);
         invincible = false;
+    }
+
+    private IEnumerator InvincibleAnimation()
+    {
+        var spriteRenderer = GetComponent<SpriteRenderer>();
+        if (invincible)
+        {
+            for (int i = 0; i < invincibleSprites.Length; i++)
+            {
+                spriteRenderer.sprite = invincibleSprites[i];
+                yield return new WaitForSeconds(0.1f);
+            }
+            spriteRenderer.sprite = invincibleSprites[0];
+        }
     }
 
     private IEnumerator InivicibleDagger()
