@@ -70,7 +70,7 @@ public class PlayerController : CharacterController
         {
             if(weapon is Dagger)
             {
-                InivicibleDagger();
+                _ = StartCoroutine("InivicibleDagger");
             }
             weapon.Attack();
             

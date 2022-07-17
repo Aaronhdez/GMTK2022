@@ -287,13 +287,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14508c5f457e77345ad8d3f45e8ffaed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
-  attackRate: 1
-  isEnemy: 0
-  hitWithAxe: {fileID: 0}
-  attackPoint: {fileID: 0}
-  attackRange: 0.5
-  beastAnimator: {fileID: -467521771441790956}
 --- !u!4 &5346768464075339262 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1960813240185469060, guid: e872f74924bf2d6469876b11455ee59a, type: 3}

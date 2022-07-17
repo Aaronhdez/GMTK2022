@@ -595,17 +595,6 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
---- !u!114 &704870526 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7909251575571301165, guid: 426f9c9036df4fb4c9ce9c8a29ddedb4, type: 3}
-  m_PrefabInstance: {fileID: 1946836320}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14508c5f457e77345ad8d3f45e8ffaed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &861823376
 GameObject:
   m_ObjectHideFlags: 0
@@ -744,7 +733,7 @@ MonoBehaviour:
   _enemiesAliveLimit: 2
   _amountOfEnemiesSpawnedAtOnce: 3
   _minimumSpawnRate: 10
-  _maximumSpawnRate: 15
+  _maximumSpawnRate: 12
   _enemiesAvailable:
   - {fileID: 7558021017037037513, guid: 87e8beb4510d01542ac55c3bffee2e17, type: 3}
   - {fileID: 7558021017037037513, guid: 20386747997bb55408c12e679764a693, type: 3}
@@ -1169,7 +1158,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7769953, y: 1}
+    m_SensorSize: {x: 1.7784201, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -2328,6 +2317,22 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6079889562129131780, guid: 426f9c9036df4fb4c9ce9c8a29ddedb4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6079889562129131781, guid: 426f9c9036df4fb4c9ce9c8a29ddedb4, type: 3}
+      propertyPath: attackRate
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 6079889562129131781, guid: 426f9c9036df4fb4c9ce9c8a29ddedb4, type: 3}
+      propertyPath: attackRange
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6924771494062740591, guid: 426f9c9036df4fb4c9ce9c8a29ddedb4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7330083926618539392, guid: 426f9c9036df4fb4c9ce9c8a29ddedb4, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -2359,10 +2364,14 @@ PrefabInstance:
     - target: {fileID: 9119654272885218088, guid: 426f9c9036df4fb4c9ce9c8a29ddedb4, type: 3}
       propertyPath: _weaponsAvailable.Array.data[4]
       value: 
-      objectReference: {fileID: 704870526}
+      objectReference: {fileID: 2084142013}
     - target: {fileID: 9119654272885218092, guid: 426f9c9036df4fb4c9ce9c8a29ddedb4, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 9119654272885218093, guid: 426f9c9036df4fb4c9ce9c8a29ddedb4, type: 3}
+      propertyPath: characterMovementSpeed
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 9119654272885218095, guid: 426f9c9036df4fb4c9ce9c8a29ddedb4, type: 3}
       propertyPath: m_RootOrder
@@ -2410,6 +2419,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7330083926618539399, guid: 426f9c9036df4fb4c9ce9c8a29ddedb4, type: 3}
+    - {fileID: 7909251575571301165, guid: 426f9c9036df4fb4c9ce9c8a29ddedb4, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 426f9c9036df4fb4c9ce9c8a29ddedb4, type: 3}
 --- !u!114 &2022856691 stripped
 MonoBehaviour:
