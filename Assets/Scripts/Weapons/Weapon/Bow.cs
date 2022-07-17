@@ -9,6 +9,8 @@ public class Bow : Weapon
     public Transform spawnPoint;
     public GameObject arrowGO;
 
+    [SerializeField] private Animator skeletonAnimator;
+
     public override void Attack()
     {
         if (!Cooldown())
@@ -19,6 +21,8 @@ public class Bow : Weapon
 
         if (isEnemy)
         {
+            skeletonAnimator.SetBool("Firing", true);
+            //skeletonAnimator.Play("SkeletonAnimation");
             int LayerEnemyBullets = LayerMask.NameToLayer("EnemyBullets");
             projectile.layer = LayerEnemyBullets;
             projectile.GetComponent<Projectile>().isEnemy = isEnemy;
