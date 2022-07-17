@@ -72,12 +72,14 @@ public class GameManager : MonoBehaviour {
             GameOver();
         }
 
-        if (_gameStarted) { 
-            if (Input.GetKeyDown(KeyCode.Escape)) {
-                if (_gamePaused)
-                    ResumeGame();
-                else
-                    PauseGame();
+        if (!_gameOver) { 
+            if (_gameStarted) { 
+                if (Input.GetKeyDown(KeyCode.Escape)) {
+                    if (_gamePaused)
+                        ResumeGame();
+                    else
+                        PauseGame();
+                }
             }
         }
     }
