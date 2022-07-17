@@ -57,28 +57,29 @@ public class GameManager : MonoBehaviour {
         _soundController.PlayMainMenuMusic();
     }
 
+    public void StartGame() {
+        _gameStarted = true;
+        playerMovementLocked = false;
+        _timerController.StartTimer();
+        _soundController.PlayGameMusic();
+        _spawnManager.StartSpawnManager();
+        _enemiesDiceController.EnableDice();
+        _weaponsDiceController.EnableDice();
+    }
 
     void Update() {
         if (!_gameOver && _player.characterLife == 0) {
             GameOver();
         }
 
-        if (!_gameStarted && Input.GetKeyDown(KeyCode.Space)) {
-            _gameStarted = true;
-            playerMovementLocked = false;
-            _timerController.StartTimer();
-            _soundController.PlayGameMusic();
-            _spawnManager.StartSpawnManager();
-            _enemiesDiceController.EnableDice();
-            _weaponsDiceController.EnableDice();
-        }
-
-        if (_gameStarted) { 
-            if (Input.GetKeyDown(KeyCode.Escape)) {
-                if (_gamePaused)
-                    ResumeGame();
-                else
-                    PauseGame();
+        if (!_gameOver) { 
+            if (_gameStarted) { 
+                if (Input.GetKeyDown(KeyCode.Escape)) {
+                    if (_gamePaused)
+                        ResumeGame();
+                    else
+                        PauseGame();
+                }
             }
         }
     }
@@ -115,8 +116,7 @@ public class GameManager : MonoBehaviour {
         _uiController.Activate("GameOverScreen");
     }
 
-    public void RestartGame()
-    {
+    public void RestartGame() {
         Time.timeScale = 1f;
         SceneManager.LoadScene("SceneUpdated");
     }
