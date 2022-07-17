@@ -7,13 +7,14 @@ public class PlayerController : CharacterController
 {
 
     public event Action<int> playerDamagedEvent;
-
     [SerializeField]
     private bool invincible;
     [SerializeField]
     private float invincibleTime;
 
     private GameManager _gameManager;
+    [SerializeField] private int _force = 5;
+    [SerializeField] private int _enemiesDefeated = 0;
 
     [SerializeField]
     private Weapon weapon;
@@ -37,7 +38,9 @@ public class PlayerController : CharacterController
             Move();
             Attack();
         }
+
     }
+
 
     //Recibir daño temporal
     private void OnCollisionEnter2D(Collision2D collision)
@@ -59,11 +62,29 @@ public class PlayerController : CharacterController
 
     }
 
+
+
     public override void Attack()
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
+            if(weapon is Dagger)
+            {
+                _ = StartCoroutine("InivicibleDagger");
+            }
             weapon.Attack();
+            
+        }
+    }
+
+    public void AddKill()
+    {
+        _enemiesDefeated++;
+
+        if (_enemiesDefeated >= 10 && characterLife < 6){
+            characterLife++;
+            playerDamagedEvent?.Invoke(characterLife);
+            _enemiesDefeated = 0;
         }
     }
 
@@ -92,10 +113,15 @@ public class PlayerController : CharacterController
             _speed.y = Input.GetAxisRaw("Vertical");
             _speed.Normalize();
             _speed *= characterMovementSpeed * Time.deltaTime;
+           
+            __rb.velocity = _speed;
 
-            _rb.velocity = _speed;
+            if (weapon is Dagger)
+            {
+                _speed = _speed * 1.5f;
+            }
 
-            _rb.MovePosition(_rb.position + _speed);
+            _rb.MovePosition(rb.position + _speed);
         }
     }
 
@@ -124,6 +150,14 @@ public class PlayerController : CharacterController
         yield return new WaitForSeconds(invincibleTime);
         invincible = false;
     }
+
+    private IEnumerator InivicibleDagger()
+    {
+        invincible = true;
+        yield return new WaitForSeconds(0.35f);
+        invincible = false;
+    }
+
 
     public override float GetAttackDistance()
     {
