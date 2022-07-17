@@ -118,7 +118,7 @@ public class GameManager : MonoBehaviour {
     public void RestartGame()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene("MainScene");
+        SceneManager.LoadScene("SceneUpdated");
     }
 
     public void AddScore(int score) {
