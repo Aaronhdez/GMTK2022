@@ -6,7 +6,7 @@ public class EnemyController : CharacterController {
 
     [SerializeField] private int enemyScore;
 
-    
+    [SerializeField] private Animator enemyAnimator;    
 
     private GameManager _gameManager;
 
@@ -47,6 +47,9 @@ public class EnemyController : CharacterController {
 
     public override void Die()
     {
+        Debug.Log("Enemy Dead");
+        //enemyAnimator.SetBool("Dead", true);
+        enemyAnimator.Play("Enemy_Dead");
         _gameManager.AddScore(enemyScore);
         gameObject.SetActive(false);
     }

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8590591337751882421}
   - component: {fileID: 2657439037394081763}
   - component: {fileID: 4937685522845826932}
+  - component: {fileID: 7493855208042880591}
   m_Layer: 7
   m_Name: OrcEnemy
   m_TagString: Orc
@@ -122,6 +123,7 @@ MonoBehaviour:
   _speed: {x: 0, y: 0}
   _defaultCharacterLife: 1
   enemyScore: 10
+  enemyAnimator: {fileID: 7493855208042880591}
   weapon: {fileID: 6583925305234585174}
   attackRange: 1.5
 --- !u!58 &2657439037394081763
@@ -161,6 +163,26 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!95 &7493855208042880591
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7558021017037037513}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 55d1feda1566f7b4c902b8dca9f19aea, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &3641497622925520583
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -232,6 +254,14 @@ PrefabInstance:
       propertyPath: attackRange
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7626845857262983313, guid: 99ad58824aa6cef4881271e7fbb302ea, type: 3}
+      propertyPath: beastAnimator
+      value: 
+      objectReference: {fileID: 7493855208042880591}
+    - target: {fileID: 7626845857262983313, guid: 99ad58824aa6cef4881271e7fbb302ea, type: 3}
+      propertyPath: goblinAnimator
+      value: 
+      objectReference: {fileID: 7493855208042880591}
     - target: {fileID: 7626845857262983314, guid: 99ad58824aa6cef4881271e7fbb302ea, type: 3}
       propertyPath: m_Name
       value: Sword

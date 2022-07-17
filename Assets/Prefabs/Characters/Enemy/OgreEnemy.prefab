@@ -123,6 +123,7 @@ MonoBehaviour:
   _speed: {x: 0, y: 0}
   _defaultCharacterLife: 1
   enemyScore: 10
+  enemyAnimator: {fileID: -467521771441790956}
   weapon: {fileID: 5040377476917939941}
   attackRange: 1.5
 --- !u!50 &4104396189402241599
@@ -189,6 +190,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8684906730859772104}
     m_Modifications:
+    - target: {fileID: 1510597353210987423, guid: e872f74924bf2d6469876b11455ee59a, type: 3}
+      propertyPath: isEnemy
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1510597353210987423, guid: e872f74924bf2d6469876b11455ee59a, type: 3}
+      propertyPath: attackPoint
+      value: 
+      objectReference: {fileID: 5346768464197467334}
     - target: {fileID: 1510597353210987423, guid: e872f74924bf2d6469876b11455ee59a, type: 3}
       propertyPath: beastAnimator
       value: 
@@ -293,5 +302,10 @@ MonoBehaviour:
 --- !u!4 &5346768464075339262 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1960813240185469060, guid: e872f74924bf2d6469876b11455ee59a, type: 3}
+  m_PrefabInstance: {fileID: 5838280120227040634}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5346768464197467334 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1960813240075923900, guid: e872f74924bf2d6469876b11455ee59a, type: 3}
   m_PrefabInstance: {fileID: 5838280120227040634}
   m_PrefabAsset: {fileID: 0}

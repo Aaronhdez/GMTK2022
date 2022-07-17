@@ -43,6 +43,11 @@ public abstract class Projectile : MonoBehaviour
                 Destroy(gameObject);
             }
         }
+
+        if (collision.gameObject.CompareTag("Arena"))
+        {
+            Destroy(gameObject);
+        }
     }
        
        

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5746450830713686604}
   - component: {fileID: 7633603846359077680}
   - component: {fileID: 4792264282325041827}
-  - component: {fileID: 3504250471428815506}
+  - component: {fileID: 9177818699241919741}
   m_Layer: 7
   m_Name: GhostEnemy
   m_TagString: Beast
@@ -123,8 +123,9 @@ MonoBehaviour:
   _speed: {x: 0, y: 0}
   _defaultCharacterLife: 1
   enemyScore: 10
+  enemyAnimator: {fileID: 9177818699241919741}
   weapon: {fileID: 3968532033910934866}
-  attackRange: 1.5
+  attackRange: 1.4
 --- !u!50 &7633603846359077680
 Rigidbody2D:
   serializedVersion: 4
@@ -162,7 +163,7 @@ CircleCollider2D:
   m_Offset: {x: -0.2, y: 0.6}
   serializedVersion: 2
   m_Radius: 2
---- !u!95 &3504250471428815506
+--- !u!95 &9177818699241919741
 Animator:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -172,7 +173,7 @@ Animator:
   m_GameObject: {fileID: 7558021017037037513}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: cd1532d4f678ad841be14a7a991aa57b, type: 2}
+  m_Controller: {fileID: 9100000, guid: 08817e8d2f28b0540ad5e2b9cbfbea03, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -253,6 +254,14 @@ PrefabInstance:
       propertyPath: isEnemy
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3093865631848396650, guid: 49965abfe95e7564e9a9c6321d44d1dd, type: 3}
+      propertyPath: attackRange
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3093865631848396650, guid: 49965abfe95e7564e9a9c6321d44d1dd, type: 3}
+      propertyPath: ghostAnimator
+      value: 
+      objectReference: {fileID: 9177818699241919741}
     - target: {fileID: 3093865631848396651, guid: 49965abfe95e7564e9a9c6321d44d1dd, type: 3}
       propertyPath: m_Name
       value: Dagger

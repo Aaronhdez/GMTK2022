@@ -9,6 +9,9 @@ public class Staff : Weapon
     public Transform spawnPoint;
     public GameObject fireballGO;
 
+    [SerializeField] private Animator mageAnimator;
+
+
     public override void Attack()
     {
         if (!Cooldown())
@@ -21,6 +24,7 @@ public class Staff : Weapon
 
         if (isEnemy)
         {
+            mageAnimator.SetBool("Firing", true);
             int LayerEnemyBullets = LayerMask.NameToLayer("EnemyBullets");
             projectile.layer = LayerEnemyBullets;
             projectile.GetComponent<Projectile>().isEnemy = isEnemy;
