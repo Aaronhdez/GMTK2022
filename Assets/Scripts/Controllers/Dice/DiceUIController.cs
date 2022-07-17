@@ -18,11 +18,15 @@ public class DiceUIController : MonoBehaviour
     }
 
     public void RollingAnimation(int newIndex) {
-        PlayAnimation();
-        _diceImage.sprite = _diceFaces[newIndex];
+        StartCoroutine(PlayAnimation(newIndex));
     }
 
-    private IEnumerable PlayAnimation() {
-        yield return new WaitForSeconds(3f);
+    private IEnumerator PlayAnimation(int newIndex) {
+        for(int i = 0; i < _diceFaces.Count; i++)
+        {
+            _diceImage.sprite = _diceFaces[i];
+            yield return new WaitForSeconds(0.30f/_diceFaces.Count);
+        }
+        _diceImage.sprite = _diceFaces[newIndex];
     }
 }

@@ -29,7 +29,6 @@ public class Axe : Weapon
                 if (enemy.CompareTag("Player"))
                 {
                     //beastAnimator.SetBool("Attack", true);
-                    beastAnimator.Play("Beast_Idle");
                     hitWithAxe.Play();
                     enemy.GetComponent<CharacterController>().TakeDamage(damage);
                 }
@@ -42,11 +41,6 @@ public class Axe : Weapon
                 }
             }            
         }
-    }
-
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
 }
 

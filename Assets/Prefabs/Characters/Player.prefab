@@ -80,8 +80,10 @@ MonoBehaviour:
   damage: 1
   attackRate: 2
   isEnemy: 0
+  hitWithSword: {fileID: 0}
   attackPoint: {fileID: 1682229544217595511}
   attackRange: 0.5
+  goblinAnimator: {fileID: 0}
 --- !u!1 &1682229546032613494
 GameObject:
   m_ObjectHideFlags: 0
@@ -247,10 +249,12 @@ MonoBehaviour:
   damage: 1
   attackRate: 1
   isEnemy: 0
+  hitWithDagger: {fileID: 0}
   attackPoints:
   - {fileID: 6079889562323324198}
   - {fileID: 6079889561742156001}
   attackRange: 0.25
+  ghostAnimator: {fileID: 0}
 --- !u!1 &6079889562323324197
 GameObject:
   m_ObjectHideFlags: 0
@@ -446,8 +450,10 @@ MonoBehaviour:
   damage: 1
   attackRate: 2
   isEnemy: 0
+  fireWithStaff: {fileID: 0}
   spawnPoint: {fileID: 6924771493562118767}
   fireballGO: {fileID: 8674192597791731477, guid: 3bd35e5904f5a514982094a5671d0547, type: 3}
+  mageAnimator: {fileID: 0}
 --- !u!1 &6924771494669919865
 GameObject:
   m_ObjectHideFlags: 0
@@ -656,7 +662,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7330083926618539398}
-  - component: {fileID: 7330083926618539399}
+  - component: {fileID: 7909251575571301165}
   m_Layer: 6
   m_Name: Axe
   m_TagString: Untagged
@@ -681,7 +687,7 @@ Transform:
   m_Father: {fileID: 9119654272885218095}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7330083926618539399
+--- !u!114 &7909251575571301165
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -690,14 +696,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 7330083926618539392}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ebf1079cb9626e045ada435734b6b2d4, type: 3}
+  m_Script: {fileID: 11500000, guid: 14508c5f457e77345ad8d3f45e8ffaed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
   attackRate: 0.75
   isEnemy: 0
+  hitWithAxe: {fileID: 0}
   attackPoint: {fileID: 7330083926458666174}
   attackRange: 1
+  beastAnimator: {fileID: 0}
 --- !u!1 &8281801399896808186
 GameObject:
   m_ObjectHideFlags: 0
@@ -778,8 +786,10 @@ MonoBehaviour:
   damage: 1
   attackRate: 1
   isEnemy: 0
+  fireWithBow: {fileID: 0}
   spawnPoint: {fileID: 8281801399896808187}
   arrowGO: {fileID: 4672413444810782965, guid: 012f003bc452bdb4b96e338aee547cb4, type: 3}
+  skeletonAnimator: {fileID: 0}
 --- !u!1 &8281801401357730821
 GameObject:
   m_ObjectHideFlags: 0
@@ -877,7 +887,7 @@ GameObject:
   - component: {fileID: 9119654272885218093}
   - component: {fileID: 9119654272885218088}
   - component: {fileID: 1593393490}
-  - component: {fileID: 1946836325}
+  - component: {fileID: 1906547894}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -970,9 +980,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterLife: 6
-  characterMovementSpeed: 10
+  characterMovementSpeed: 40
   dead: 0
-  invincible: 1
+  rb: {fileID: 0}
+  _speed: {x: 0, y: 0}
+  invincible: 0
   invincibleTime: 1
   weapon: {fileID: 0}
 --- !u!114 &9119654272885218088
@@ -994,7 +1006,7 @@ MonoBehaviour:
   - {fileID: 8281801400547820785}
   - {fileID: 6079889562129131781}
   - {fileID: 6924771494062740592}
-  - {fileID: 7330083926618539399}
+  - {fileID: 1510597353210987423, guid: e872f74924bf2d6469876b11455ee59a, type: 3}
   _playerController: {fileID: 9119654272885218093}
   _diceUIController: {fileID: 0}
   _weaponIndex: 0
@@ -1024,7 +1036,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!50 &1946836325
+--- !u!50 &1906547894
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -1036,12 +1048,12 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 15
   m_LinearDrag: 0
-  m_AngularDrag: 0
+  m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0

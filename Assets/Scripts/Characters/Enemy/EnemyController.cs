@@ -2,13 +2,13 @@ using System;
 using UnityEngine;
 
 public class EnemyController : CharacterController {
-    [SerializeField] private int _defaultCharacterLife;
+    [SerializeField] protected int _defaultCharacterLife;
 
     [SerializeField] private int enemyScore;
 
-    
+    [SerializeField] private Animator enemyAnimator;    
 
-    private GameManager _gameManager;
+    protected GameManager _gameManager;
 
     public Weapon weapon;
     public float attackRange;
@@ -38,7 +38,6 @@ public class EnemyController : CharacterController {
     {
         weapon.Attack();
 
-
         GameObject player = GameObject.FindGameObjectWithTag("Player");
 
         float angle = Mathf.Atan2(player.transform.position.y - transform.position.y, player.transform.position.x - transform.position.x) * Mathf.Rad2Deg;
@@ -47,6 +46,9 @@ public class EnemyController : CharacterController {
 
     public override void Die()
     {
+        Debug.Log("Enemy Dead");
+        //enemyAnimator.SetBool("Dead", true);
+        //enemyAnimator.Play("Enemy_Dead");
         _gameManager.AddScore(enemyScore);
         gameObject.SetActive(false);
     }
