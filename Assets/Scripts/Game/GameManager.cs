@@ -112,13 +112,13 @@ public class GameManager : MonoBehaviour {
         _enemiesDiceController.DisableDice();
         _weaponsDiceController.DisableDice();
         _soundController.PlayGameOverMusic();
-        _gameOverInfo.text = "You have survived " + _timerController.GetCurrentTime() + " and scored " + score + " points.";
+        _gameOverInfo.text = "You have survived " + _timerController.GetCurrentTime() + "\nScore: " + score + " points";
         _uiController.Activate("GameOverScreen");
     }
 
     public void RestartGame() {
         Time.timeScale = 1f;
-        SceneManager.LoadScene("SceneUpdated");
+        SceneManager.LoadScene("FinalScene");
     }
 
     public void AddScore(int score) {

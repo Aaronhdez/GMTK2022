@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  speed: 3
+  speed: 5
   isEnemy: 0
   hitWithFireBall: {fileID: -6031133702888342808}
   fireballAnimator: {fileID: 5239085316837058162}

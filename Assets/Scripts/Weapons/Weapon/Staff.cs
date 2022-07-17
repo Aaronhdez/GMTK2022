@@ -9,7 +9,9 @@ public class Staff : Weapon
     public Transform spawnPoint;
     public GameObject fireballGO;
 
-    [SerializeField] private Animator mageAnimator;
+    private bool isplaying = false;
+
+    [SerializeField] private Sprite[] staffAttack;
 
 
     public override void Attack()
@@ -19,16 +21,32 @@ public class Staff : Weapon
             return;
         }
 
+        if (!isEnemy)
+        {
+            StartCoroutine(PlayAnimationAttack());
+        }
 
         GameObject projectile = Instantiate(fireballGO, spawnPoint.position, spawnPoint.rotation);
 
         if (isEnemy)
         {
-            mageAnimator.SetBool("Firing", true);
             int LayerEnemyBullets = LayerMask.NameToLayer("EnemyBullets");
             projectile.layer = LayerEnemyBullets;
             projectile.GetComponent<Projectile>().isEnemy = isEnemy;
             fireWithStaff.Play();
         }
+    }
+
+    public IEnumerator PlayAnimationAttack()
+    {
+        isplaying = true;
+        var spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        for (int i = 1; i < staffAttack.Length; i++)
+        {
+            spriteRenderer.sprite = staffAttack[i];
+            yield return new WaitForSeconds(0.1f);
+        }
+        spriteRenderer.sprite = staffAttack[0];
+        isplaying = false;
     }
 }

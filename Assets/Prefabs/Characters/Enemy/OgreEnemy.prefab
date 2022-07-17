@@ -117,9 +117,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterLife: 1
-  characterMovementSpeed: 3
+  characterMovementSpeed: 2.5
   dead: 0
-  rb: {fileID: 0}
+  _rb: {fileID: 0}
   _speed: {x: 0, y: 0}
   _defaultCharacterLife: 1
   enemyScore: 10

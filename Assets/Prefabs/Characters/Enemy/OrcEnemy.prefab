@@ -117,7 +117,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterLife: 1
-  characterMovementSpeed: 4
+  characterMovementSpeed: 3.5
   dead: 0
   _rb: {fileID: 0}
   _speed: {x: 0, y: 0}
