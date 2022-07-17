@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4104396189402241592}
   - component: {fileID: 4104396189402241599}
   - component: {fileID: 6684934889277669083}
+  - component: {fileID: -467521771441790956}
   m_Layer: 7
   m_Name: OgreEnemy
   m_TagString: ogre
@@ -122,7 +123,7 @@ MonoBehaviour:
   _speed: {x: 0, y: 0}
   _defaultCharacterLife: 1
   enemyScore: 10
-  weapon: {fileID: 5346768464075339263}
+  weapon: {fileID: 5040377476917939941}
   attackRange: 1.5
 --- !u!50 &4104396189402241599
 Rigidbody2D:
@@ -161,6 +162,26 @@ CapsuleCollider2D:
   m_Offset: {x: 0.1, y: -0.5}
   m_Size: {x: 6, y: 3.8}
   m_Direction: 1
+--- !u!95 &-467521771441790956
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4172234053957555910}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 69102f6f1046114478996a8dc0bc4991, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &5838280120227040634
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -168,6 +189,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8684906730859772104}
     m_Modifications:
+    - target: {fileID: 1510597353210987423, guid: e872f74924bf2d6469876b11455ee59a, type: 3}
+      propertyPath: beastAnimator
+      value: 
+      objectReference: {fileID: -467521771441790956}
     - target: {fileID: 1960813240185469058, guid: e872f74924bf2d6469876b11455ee59a, type: 3}
       propertyPath: m_Name
       value: Axe
@@ -230,19 +255,43 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e872f74924bf2d6469876b11455ee59a, type: 3}
+--- !u!114 &5040377476917939941 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1510597353210987423, guid: e872f74924bf2d6469876b11455ee59a, type: 3}
+  m_PrefabInstance: {fileID: 5838280120227040634}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5346768464075339256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14508c5f457e77345ad8d3f45e8ffaed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &5346768464075339256 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1960813240185469058, guid: e872f74924bf2d6469876b11455ee59a, type: 3}
+  m_PrefabInstance: {fileID: 5838280120227040634}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2009446621457112767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5346768464075339256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14508c5f457e77345ad8d3f45e8ffaed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
+  attackRate: 1
+  isEnemy: 0
+  hitWithAxe: {fileID: 0}
+  attackPoint: {fileID: 0}
+  attackRange: 0.5
+  beastAnimator: {fileID: 0}
 --- !u!4 &5346768464075339262 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1960813240185469060, guid: e872f74924bf2d6469876b11455ee59a, type: 3}
   m_PrefabInstance: {fileID: 5838280120227040634}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5346768464075339263 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1960813240185469061, guid: e872f74924bf2d6469876b11455ee59a, type: 3}
-  m_PrefabInstance: {fileID: 5838280120227040634}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ebf1079cb9626e045ada435734b6b2d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
