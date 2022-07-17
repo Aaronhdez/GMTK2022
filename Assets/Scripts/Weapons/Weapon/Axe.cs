@@ -9,6 +9,9 @@ public class Axe : Weapon
     public Transform attackPoint;
     public float attackRange = 0.5f;
 
+    [SerializeField] private Animator beastAnimator;
+
+
     public override void Attack()
     {
         if (!Cooldown())
@@ -25,6 +28,8 @@ public class Axe : Weapon
             {
                 if (enemy.CompareTag("Player"))
                 {
+                    //beastAnimator.SetBool("Attack", true);
+                    beastAnimator.Play("Beast_Idle");
                     hitWithAxe.Play();
                     enemy.GetComponent<CharacterController>().TakeDamage(damage);
                 }

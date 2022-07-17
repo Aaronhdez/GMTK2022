@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5746450830713686604}
   - component: {fileID: 7633603846359077680}
   - component: {fileID: 4792264282325041827}
+  - component: {fileID: 3504250471428815506}
   m_Layer: 7
   m_Name: GhostEnemy
   m_TagString: Beast
@@ -161,6 +162,26 @@ CircleCollider2D:
   m_Offset: {x: -0.2, y: 0.6}
   serializedVersion: 2
   m_Radius: 2
+--- !u!95 &3504250471428815506
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7558021017037037513}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: cd1532d4f678ad841be14a7a991aa57b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &2160761065340271160
 PrefabInstance:
   m_ObjectHideFlags: 0
