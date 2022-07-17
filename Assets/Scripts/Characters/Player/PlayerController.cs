@@ -114,14 +114,14 @@ public class PlayerController : CharacterController
             _speed.Normalize();
             _speed *= characterMovementSpeed * Time.deltaTime;
            
-            __rb.velocity = _speed;
+            _rb.velocity = _speed;
 
             if (weapon is Dagger)
             {
                 _speed = _speed * 1.5f;
             }
 
-            _rb.MovePosition(rb.position + _speed);
+            _rb.MovePosition(_rb.position + _speed);
         }
     }
 
