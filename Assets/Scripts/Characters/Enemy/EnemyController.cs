@@ -6,6 +6,7 @@ public class EnemyController : CharacterController {
 
     [SerializeField] private int enemyScore;
 
+    
 
     private GameManager _gameManager;
 
@@ -36,6 +37,7 @@ public class EnemyController : CharacterController {
     public override void Attack()
     {
         weapon.Attack();
+
 
         GameObject player = GameObject.FindGameObjectWithTag("Player");
 
